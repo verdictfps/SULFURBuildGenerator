@@ -1,0 +1,95 @@
+﻿<Window x:Class="SULFURBuildGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SULFURBuildGenerator"
+        mc:Ignorable="d"
+        Title="SULFUR Build Generator" Height="481" Width="857" Background="#FF383100">
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="465" VerticalAlignment="Center" Width="917" Source="/Goblin Crosshair Guild Variant png.png" RenderTransformOrigin="0.285,0.572" Stretch="Fill" Opacity="0.5" ClipToBounds="True">
+            <Image.Effect>
+                <BlurEffect/>
+            </Image.Effect>
+        </Image>
+        <CheckBox x:Name="All_Guns" Content="All Guns" HorizontalAlignment="Left" Margin="34,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="True" Foreground="White"/>
+        <CheckBox x:Name="Pistols" Content="Pistols" HorizontalAlignment="Left" Margin="125,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <CheckBox x:Name="Revolvers" Content="Revolvers" HorizontalAlignment="Left" Margin="211,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <CheckBox x:Name="Shotguns" Content="Shotguns" HorizontalAlignment="Left" Margin="302,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <CheckBox x:Name="SMGs" Content="SMGs" HorizontalAlignment="Left" Margin="400,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <CheckBox x:Name="ARs" Content="ARs" HorizontalAlignment="Left" Margin="484,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <CheckBox x:Name="LMGs" Content="LMGs" HorizontalAlignment="Left" Margin="552,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <CheckBox x:Name="Rifles" Content="Rifles" HorizontalAlignment="Left" Margin="627,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <CheckBox x:Name="Snipers" Content="Snipers" HorizontalAlignment="Left" Margin="704,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <TextBlock x:Name="weapon_categories" HorizontalAlignment="Left" Height="32" Margin="34,18,0,0" TextWrapping="Wrap" Text="Weapon Categories" VerticalAlignment="Top" Width="340" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
+        <TextBlock x:Name="attachments" HorizontalAlignment="Left" Height="32" Margin="34,75,0,0" TextWrapping="Wrap" Text="Attachments" VerticalAlignment="Top" Width="379" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
+        <CheckBox x:Name="all_attachments" Content="All Attachments" HorizontalAlignment="Left" Margin="34,110,0,0" VerticalAlignment="Top" Width="112" IsChecked="True" Foreground="White"/>
+        <CheckBox x:Name="barrels" Content="Barrels" HorizontalAlignment="Left" Margin="151,110,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <CheckBox x:Name="optics" Content="Optics" HorizontalAlignment="Left" Margin="227,110,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <CheckBox x:Name="Laser" Content="Laser" HorizontalAlignment="Left" Margin="302,110,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <CheckBox x:Name="FiringMode" Content="Firing Mode" HorizontalAlignment="Left" Margin="370,110,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <CheckBox x:Name="Rechamber" Content="Rechamber" HorizontalAlignment="Left" Margin="474,110,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
+        <TextBlock x:Name="enchantment_count" HorizontalAlignment="Left" Height="32" Margin="34,133,0,0" TextWrapping="Wrap" Text="Enchantment Count" VerticalAlignment="Top" Width="250" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
+        <Slider x:Name="enchantment_slider" HorizontalAlignment="Left" Margin="34,170,0,0" Width="193" Height="47" RenderTransformOrigin="0.508,1.082" Maximum="5" SmallChange="1" VerticalAlignment="Top" TickPlacement="BottomRight" AutoToolTipPlacement="TopLeft" IsSnapToTickEnabled="True" Value="5"/>
+        <TextBlock HorizontalAlignment="Left" Height="22" Margin="34,195,0,0" TextWrapping="Wrap" Text="0          1         2         3         4         5" VerticalAlignment="Top" Width="193" Foreground="White"/>
+        <TextBlock x:Name="enchantment_count_Copy" HorizontalAlignment="Left" Height="32" Margin="34,217,0,0" TextWrapping="Wrap" Text="Scrolls" VerticalAlignment="Top" Width="250" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
+        <RadioButton x:Name="t1_scrolls_button" Content="Tier 1" HorizontalAlignment="Left" Margin="146,249,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls"/>
+        <RadioButton x:Name="t2_scrolls_button" Content="Tier 2" HorizontalAlignment="Left" Margin="211,249,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls"/>
+        <RadioButton x:Name="no_scrolls_button" Content="None" HorizontalAlignment="Left" Margin="34,249,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls" IsChecked="False"/>
+        <RadioButton x:Name="all_scrolls_button" Content="All" HorizontalAlignment="Left" Margin="98,249,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls" IsChecked="True"/>
+        <Button x:Name="generate_build_button" Content="Generate Build" HorizontalAlignment="Left" Margin="34,332,0,0" VerticalAlignment="Top" Height="78" Width="300" FontFamily="Fredoka" FontSize="24" IsDefault="True" Click="ButtonGenerateBuild_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <ListView x:Name="build_box" Margin="370,149,37,24" Background="Gainsboro" SelectionMode="Single" MinWidth="90">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Item" DisplayMemberBinding="{Binding Item}"/>
+                    <GridViewColumn Header="Selection" DisplayMemberBinding="{Binding Selection}" Width="250"/>
+                </GridView>
+            </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style/>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <ComboBox x:Name="scroll_dropdown" HorizontalAlignment="Left" Margin="34,283,0,0" VerticalAlignment="Top" Width="300" Height="29" IsEnabled="False">
+            <ComboBoxItem Content="Dark"/>
+            <ComboBoxItem Content="Earth"/>
+            <ComboBoxItem Content="Embers"/>
+            <ComboBoxItem Content="Frostbite"/>
+            <ComboBoxItem Content="Light"/>
+            <ComboBoxItem Content="Nature"/>
+            <ComboBoxItem Content="Plague"/>
+            <ComboBoxItem Content="Surge"/>
+            <ComboBoxItem Content="Water"/>
+            <ComboBoxItem Content="Aftershock"/>
+            <ComboBoxItem Content="Chain Lightning"/>
+            <ComboBoxItem Content="Chaos Strike"/>
+            <ComboBoxItem Content="Charm"/>
+            <ComboBoxItem Content="Corpse Explosion"/>
+            <ComboBoxItem Content="Crusader"/>
+            <ComboBoxItem Content="Explosions"/>
+            <ComboBoxItem Content="Fear"/>
+            <ComboBoxItem Content="Flame Thrower"/>
+            <ComboBoxItem Content="Holy Fire"/>
+            <ComboBoxItem Content="Holy Purge"/>
+            <ComboBoxItem Content="Lava"/>
+            <ComboBoxItem Content="Least Resistance"/>
+            <ComboBoxItem Content="Noxiosa"/>
+            <ComboBoxItem Content="Pesticide"/>
+            <ComboBoxItem Content="Petrification"/>
+            <ComboBoxItem Content="Petroleum"/>
+            <ComboBoxItem Content="Poison Blood"/>
+            <ComboBoxItem Content="Prism"/>
+            <ComboBoxItem Content="Rocket Launcher"/>
+            <ComboBoxItem Content="Slush"/>
+            <ComboBoxItem Content="Sacrifice"/>
+            <ComboBoxItem Content="Thunderbolt"/>
+            <ComboBoxItem Content="Toxic Lobotomy"/>
+            <ComboBoxItem Content="Voodoo"/>
+        </ComboBox>
+        <RadioButton x:Name="choose_scrolls_button" Content="Choose..." HorizontalAlignment="Left" Margin="284,249,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls" Checked="choose_scrolls_button_Checked" Unchecked="choose_scrolls_button_Unchecked"/>
+
+    </Grid>
+</Window>
