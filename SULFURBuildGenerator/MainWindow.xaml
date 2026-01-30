@@ -5,55 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SULFURBuildGenerator"
         mc:Ignorable="d"
-        Title="SULFUR Build Generator" Height="481" Width="857" Background="#FF383100">
-    <Grid>
-        <Image HorizontalAlignment="Left" Height="465" VerticalAlignment="Center" Width="917" Source="/Goblin Crosshair Guild Variant png.png" RenderTransformOrigin="0.285,0.572" Stretch="Fill" Opacity="0.5" ClipToBounds="True">
+        Title="SULFUR Build Generator" Height="705" Width="857" Background="#FF383100">
+    <Grid Margin="0,0,0,20">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Image HorizontalAlignment="Left" Width="917" Source="/Goblin Crosshair Guild Variant png.png" RenderTransformOrigin="0.285,0.572" Stretch="Fill" Opacity="0.5" ClipToBounds="True" Margin="0,236,0,-19" Grid.RowSpan="3">
             <Image.Effect>
                 <BlurEffect/>
             </Image.Effect>
         </Image>
-        <CheckBox x:Name="All_Guns" Content="All Guns" HorizontalAlignment="Left" Margin="34,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="True" Foreground="White"/>
-        <CheckBox x:Name="Pistols" Content="Pistols" HorizontalAlignment="Left" Margin="125,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <CheckBox x:Name="Revolvers" Content="Revolvers" HorizontalAlignment="Left" Margin="211,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <CheckBox x:Name="Shotguns" Content="Shotguns" HorizontalAlignment="Left" Margin="302,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <CheckBox x:Name="SMGs" Content="SMGs" HorizontalAlignment="Left" Margin="400,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <CheckBox x:Name="ARs" Content="ARs" HorizontalAlignment="Left" Margin="484,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <CheckBox x:Name="LMGs" Content="LMGs" HorizontalAlignment="Left" Margin="552,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <CheckBox x:Name="Rifles" Content="Rifles" HorizontalAlignment="Left" Margin="627,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <CheckBox x:Name="Snipers" Content="Snipers" HorizontalAlignment="Left" Margin="704,55,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <TextBlock x:Name="weapon_categories" HorizontalAlignment="Left" Height="32" Margin="34,18,0,0" TextWrapping="Wrap" Text="Weapon Categories" VerticalAlignment="Top" Width="340" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
-        <TextBlock x:Name="attachments" HorizontalAlignment="Left" Height="32" Margin="34,75,0,0" TextWrapping="Wrap" Text="Attachments" VerticalAlignment="Top" Width="379" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
-        <CheckBox x:Name="all_attachments" Content="All Attachments" HorizontalAlignment="Left" Margin="34,110,0,0" VerticalAlignment="Top" Width="112" IsChecked="True" Foreground="White"/>
-        <CheckBox x:Name="barrels" Content="Barrels" HorizontalAlignment="Left" Margin="151,110,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <CheckBox x:Name="optics" Content="Optics" HorizontalAlignment="Left" Margin="227,110,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <CheckBox x:Name="Laser" Content="Laser" HorizontalAlignment="Left" Margin="302,110,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <CheckBox x:Name="FiringMode" Content="Firing Mode" HorizontalAlignment="Left" Margin="370,110,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <CheckBox x:Name="Rechamber" Content="Rechamber" HorizontalAlignment="Left" Margin="474,110,0,0" VerticalAlignment="Top" Width="86" IsChecked="False" Foreground="White"/>
-        <TextBlock x:Name="enchantment_count" HorizontalAlignment="Left" Height="32" Margin="34,133,0,0" TextWrapping="Wrap" Text="Enchantment Count" VerticalAlignment="Top" Width="250" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
-        <Slider x:Name="enchantment_slider" HorizontalAlignment="Left" Margin="34,170,0,0" Width="193" Height="47" RenderTransformOrigin="0.508,1.082" Maximum="5" SmallChange="1" VerticalAlignment="Top" TickPlacement="BottomRight" AutoToolTipPlacement="TopLeft" IsSnapToTickEnabled="True" Value="5"/>
-        <TextBlock HorizontalAlignment="Left" Height="22" Margin="34,195,0,0" TextWrapping="Wrap" Text="0          1         2         3         4         5" VerticalAlignment="Top" Width="193" Foreground="White"/>
-        <TextBlock x:Name="enchantment_count_Copy" HorizontalAlignment="Left" Height="32" Margin="34,217,0,0" TextWrapping="Wrap" Text="Scrolls" VerticalAlignment="Top" Width="250" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
-        <RadioButton x:Name="t1_scrolls_button" Content="Tier 1" HorizontalAlignment="Left" Margin="146,249,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls"/>
-        <RadioButton x:Name="t2_scrolls_button" Content="Tier 2" HorizontalAlignment="Left" Margin="211,249,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls"/>
-        <RadioButton x:Name="no_scrolls_button" Content="None" HorizontalAlignment="Left" Margin="34,249,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls" IsChecked="False"/>
-        <RadioButton x:Name="all_scrolls_button" Content="All" HorizontalAlignment="Left" Margin="98,249,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls" IsChecked="True"/>
-        <Button x:Name="generate_build_button" Content="Generate Build" HorizontalAlignment="Left" Margin="34,332,0,0" VerticalAlignment="Top" Height="78" Width="300" FontFamily="Fredoka" FontSize="24" IsDefault="True" Click="ButtonGenerateBuild_Click">
+        <CheckBox x:Name="All_Guns" Content="All Guns" HorizontalAlignment="Left" Margin="35,49,0,0" VerticalAlignment="Top" Width="64" IsChecked="True" Foreground="White" Height="15"/>
+        <CheckBox x:Name="Pistols" Content="Pistols" HorizontalAlignment="Left" Margin="109,49,0,0" VerticalAlignment="Top" Width="54" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="Revolvers" Content="Revolvers" HorizontalAlignment="Left" Margin="173,49,0,0" VerticalAlignment="Top" Width="71" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="Shotguns" Content="Shotguns" HorizontalAlignment="Left" Margin="254,49,0,0" VerticalAlignment="Top" Width="70" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="SMGs" Content="SMGs" HorizontalAlignment="Left" Margin="334,49,0,0" VerticalAlignment="Top" Width="51" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="ARs" Content="ARs" HorizontalAlignment="Left" Margin="395,49,0,0" VerticalAlignment="Top" Width="40" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="LMGs" Content="LMGs" HorizontalAlignment="Left" Margin="445,49,0,0" VerticalAlignment="Top" Width="50" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="Rifles" Content="Rifles" HorizontalAlignment="Left" Margin="505,49,0,0" VerticalAlignment="Top" Width="48" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="Snipers" Content="Snipers" HorizontalAlignment="Left" Margin="563,49,0,0" VerticalAlignment="Top" Width="59" IsChecked="False" Foreground="White" Height="15"/>
+        <TextBlock x:Name="weapon_categories" HorizontalAlignment="Left" Height="32" Margin="35,12,0,0" TextWrapping="Wrap" Text="Weapon Categories" VerticalAlignment="Top" Width="340" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
+        <TextBlock x:Name="attachments" HorizontalAlignment="Left" Height="32" Margin="35,72,0,0" TextWrapping="Wrap" Text="Attachments" VerticalAlignment="Top" Width="379" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
+        <CheckBox x:Name="allAttachmentsCheckbox" Content="All Attachments" HorizontalAlignment="Left" Margin="35,109,0,0" VerticalAlignment="Top" Width="104" IsChecked="True" Foreground="White" Height="15"/>
+        <CheckBox x:Name="barrels" Content="Barrels" HorizontalAlignment="Left" Margin="149,109,0,0" VerticalAlignment="Top" Width="56" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="optics" Content="Optics" HorizontalAlignment="Left" Margin="215,109,0,0" VerticalAlignment="Top" Width="54" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="Laser" Content="Laser" HorizontalAlignment="Left" Margin="279,109,0,0" VerticalAlignment="Top" Width="48" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="FiringMode" Content="Firing Mode" HorizontalAlignment="Left" Margin="338,109,0,0" VerticalAlignment="Top" Width="85" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="Rechamber" Content="Rechamber" HorizontalAlignment="Left" Margin="433,109,0,0" VerticalAlignment="Top" Width="80" IsChecked="False" Foreground="White" Height="15"/>
+        <TextBlock x:Name="enchantment_count" HorizontalAlignment="Left" Height="32" Margin="35,192,0,0" TextWrapping="Wrap" Text="Enchantment Count" VerticalAlignment="Top" Width="250" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
+        <Slider x:Name="enchantment_slider" HorizontalAlignment="Left" Margin="35,229,0,0" Width="193" Height="47" RenderTransformOrigin="0.508,1.082" Maximum="5" SmallChange="1" VerticalAlignment="Top" TickPlacement="BottomRight" AutoToolTipPlacement="TopLeft" IsSnapToTickEnabled="True" Value="5"/>
+        <TextBlock HorizontalAlignment="Left" Height="14" Margin="35,254,0,0" TextWrapping="Wrap" Text="0          1         2         3         4         5" VerticalAlignment="Top" Width="193" Foreground="White"/>
+        <TextBlock x:Name="enchantment_count_Copy" HorizontalAlignment="Left" Height="32" Margin="35,276,0,0" TextWrapping="Wrap" Text="Scrolls" VerticalAlignment="Top" Width="250" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
+        <RadioButton x:Name="t1_scrolls_button" Content="Tier 1" HorizontalAlignment="Left" Margin="137,313,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls" Width="46" Height="14"/>
+        <RadioButton x:Name="t2_scrolls_button" Content="Tier 2" HorizontalAlignment="Left" Margin="193,313,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls" Height="14" Width="48"/>
+        <RadioButton x:Name="no_scrolls_button" Content="None" HorizontalAlignment="Left" Margin="35,313,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls" IsChecked="False" Height="14" Width="48"/>
+        <RadioButton x:Name="all_scrolls_button" Content="All" HorizontalAlignment="Left" Margin="93,313,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls" IsChecked="True" Height="14" Width="34"/>
+        <Button x:Name="generate_build_button" Content="Generate Build" HorizontalAlignment="Left" Margin="35,555,0,0" VerticalAlignment="Top" Height="78" Width="306" FontFamily="Fredoka" FontSize="24" IsDefault="True" Click="ButtonGenerateBuild_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <ListView x:Name="build_box" Margin="370,149,37,24" Background="Gainsboro" SelectionMode="Single" MinWidth="90">
+        <ListView x:Name="build_box" Margin="370,206,37,10" Background="Gainsboro" SelectionMode="Multiple" MinWidth="90" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" SelectionChanged="build_box_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Item" DisplayMemberBinding="{Binding Item}"/>
+                    <GridView.Columns>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox Tag="{Binding Done}" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Item" DisplayMemberBinding="{Binding Item}" Width="123"/>
                     <GridViewColumn Header="Selection" DisplayMemberBinding="{Binding Selection}" Width="250"/>
+                    </GridView.Columns>
                 </GridView>
-            </ListView.View>
+                </ListView.View>
             <ListView.ItemContainerStyle>
                 <Style/>
             </ListView.ItemContainerStyle>
         </ListView>
-        <ComboBox x:Name="scroll_dropdown" HorizontalAlignment="Left" Margin="34,283,0,0" VerticalAlignment="Top" Width="300" Height="29" IsEnabled="False">
+        <ComboBox x:Name="scroll_dropdown" HorizontalAlignment="Left" Margin="35,333,0,0" VerticalAlignment="Top" Width="306" Height="29" IsEnabled="False">
             <ComboBoxItem Content="Dark"/>
             <ComboBoxItem Content="Earth"/>
             <ComboBoxItem Content="Embers"/>
@@ -89,7 +103,17 @@
             <ComboBoxItem Content="Toxic Lobotomy"/>
             <ComboBoxItem Content="Voodoo"/>
         </ComboBox>
-        <RadioButton x:Name="choose_scrolls_button" Content="Choose..." HorizontalAlignment="Left" Margin="284,249,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls" Checked="choose_scrolls_button_Checked" Unchecked="choose_scrolls_button_Unchecked"/>
+        <RadioButton x:Name="choose_scrolls_button" Content="Choose..." HorizontalAlignment="Left" Margin="253,313,0,0" VerticalAlignment="Top" Background="White" Foreground="White" GroupName="scrolls" Checked="choose_scrolls_button_Checked" Unchecked="choose_scrolls_button_Unchecked" Height="14" Width="66"/>
+        <TextBlock x:Name="equipmentHeader" HorizontalAlignment="Left" Height="32" Margin="35,132,0,0" TextWrapping="Wrap" Text="Equipment" VerticalAlignment="Top" Width="379" FontSize="24" FontFamily="Fredoka" Foreground="White" FontWeight="Bold"/>
+        <CheckBox x:Name="allEquipmentCheckbox" Content="All Equipment" HorizontalAlignment="Left" Margin="35,169,0,0" VerticalAlignment="Top" Width="95" IsChecked="True" Foreground="White" Height="15"/>
+        <CheckBox x:Name="headEquipmentCheckbox" Content="Head" HorizontalAlignment="Left" Margin="140,169,0,0" VerticalAlignment="Top" Width="48" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="bodyEquipmentCheckbox" Content="Body" HorizontalAlignment="Left" Margin="198,169,0,0" VerticalAlignment="Top" Width="48" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="trinket1EquipmentCheckbox" Content="Trinket 1" HorizontalAlignment="Left" Margin="419,168,0,0" VerticalAlignment="Top" Width="65" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="trinket2EquipmentCheckbox" Content="Trinket 2" HorizontalAlignment="Left" Margin="494,168,0,0" VerticalAlignment="Top" Width="66" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="trinket3EquipmentCheckbox" Content="Trinket 3" HorizontalAlignment="Left" Margin="570,168,0,0" VerticalAlignment="Top" Width="65" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="trinket4EquipmentCheckbox" Content="Trinket 4" HorizontalAlignment="Left" Margin="645,169,0,0" VerticalAlignment="Top" Width="66" IsChecked="False" Foreground="White" RenderTransformOrigin="0.486,-0.13" Height="15"/>
+        <CheckBox x:Name="leftFootEquipmentCheckbox" Content="Left Foot" HorizontalAlignment="Left" Margin="256,169,0,0" VerticalAlignment="Top" Width="67" IsChecked="False" Foreground="White" Height="15"/>
+        <CheckBox x:Name="rightFootEquipmentCheckbox" Content="Right Foot" HorizontalAlignment="Left" Margin="333,169,0,0" VerticalAlignment="Top" Width="76" IsChecked="False" Foreground="White" Height="15"/>
 
     </Grid>
 </Window>

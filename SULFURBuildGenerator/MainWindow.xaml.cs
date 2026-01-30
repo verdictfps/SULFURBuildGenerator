@@ -281,11 +281,19 @@ namespace SULFURBuildGenerator
 
         List<string> listRechamber = new List<string> { "Chamber Chisel (.50 BMG)", "Chamber Chisel (12Ga)", "Chamber Chisel (5.56mm)", "Chamber Chisel (7.62mm)", "Chamber Chisel (9mm)" };
 
-        
-
         List<string> totalAttachments = new List<string>();
 
         List<string> totalEnchantments = new List<string>();
+
+        List<string> totalEquipment = new List<string> { "Balaclava", "Beer Helmet", "Blue Bandana", "Cowboy Hat", "Dunce Cap", "Ear Protectors", "Eye Patch", "Firefighter Helmet", "Fluffy Hat", "Gas Mask", "High Cut Helmet,", "Knight's Helmet", "Motorcycle Helmet", "Pith Helmet", "Police Hat", "Pope Hat", "Red Bandana", "Round Glasses", "Ski Goggles", "Square Glasses", "Steel Helmet", "Sunglasses", "Sylvester Hat", "Tanker Helmet", "Titanium Helmet", "Winter Scarf", "Badass Vest", "Ballistic Vest", "Bathrobe", "Breastplate", "Camo Jacket", "Cowboy Vest", "Firefighter Jacket", "Ghillie Suit", "Hazmat Suit", "Hunting Vest", "Leather Jacket", "Life Vest", "Office Wear", "Old-Timey Suit", "Parka", "Pillow Armor", "Plate Carrier", "Police Uniform", "Pyjamas", "Raincoat", "Samurai Armor", "Santa Coat", "Tracksuit", "Turtle Shell", "Yellow Hoodie" };
+
+        List<string> listHeadEquipment = new List<string> { "Balaclava", "Beer Helmet", "Blue Bandana", "Cowboy Hat", "Dunce Cap", "Ear Protectors", "Eye Patch", "Firefighter Helmet", "Fluffy Hat", "Gas Mask", "High Cut Helmet,", "Knight's Helmet", "Motorcycle Helmet", "Pith Helmet", "Police Hat", "Pope Hat", "Red Bandana", "Round Glasses", "Ski Goggles", "Square Glasses", "Steel Helmet", "Sunglasses", "Sylvester Hat", "Tanker Helmet", "Titanium Helmet", "Winter Scarf" };
+
+        List<string> listBodyEquipment = new List<string> { "Badass Vest", "Ballistic Vest", "Bathrobe", "Breastplate", "Camo Jacket", "Cowboy Vest", "Firefighter Jacket", "Ghillie Suit", "Hazmat Suit", "Hunting Vest", "Leather Jacket", "Life Vest", "Office Wear", "Old-Timey Suit", "Parka", "Pillow Armor", "Plate Carrier", "Police Uniform", "Pyjamas", "Raincoat", "Samurai Armor", "Santa Coat", "Tracksuit", "Turtle Shell", "Yellow Hoodie" };
+
+        List<string> listFootEquipment = new List<string> { "Blast Boot", "Blue Slipper", "Christmas Sock", "Clog", "Combat Boot", "Cowboy Boot", "Diving Fin", "Genie Shoe", "Geta", "Golden Slipper", "High Heel", "High Quality Elf Shoe", "Ice Skate", "Peg Leg", "Peg Leg", "Platform Shoe", "Roller Blade", "Rubber Boot", "Running Shoe", "Shoe", "Sneaker", "Sock", "Springcoil Boot", "Sulf Air", "Ygg" };
+
+        List<string> listTrinkets = new List<string> { "Ass Wheel(TM)", "Dark Lamp", "Detective Pipe", "Dog Whistle", "Dogtags", "Extra Lung", "Four-Leaf Clover", "Instant Defibrillator", "Iron Feather", "Knee Pads", "Library Card", "Loaded Die", "Lock of the Magus", "Metabulator Pump", "Oxygen Tank", "Range Finder", "Sheriff's Badge", "Yakety Sax" };
 
         public MainWindow()
         {
@@ -301,6 +309,14 @@ namespace SULFURBuildGenerator
             this.build_box.Items.Add(new MyItem { Item = "Enchantment 3" });
             this.build_box.Items.Add(new MyItem { Item = "Enchantment 4" });
             this.build_box.Items.Add(new MyItem { Item = "Enchantment 5" });
+            this.build_box.Items.Add(new MyItem { Item = "Head Equipment" });
+            this.build_box.Items.Add(new MyItem { Item = "Body Equipment" });
+            this.build_box.Items.Add(new MyItem { Item = "Left Foot" });
+            this.build_box.Items.Add(new MyItem { Item = "Right Foot" });
+            this.build_box.Items.Add(new MyItem { Item = "Trinket 1" });
+            this.build_box.Items.Add(new MyItem { Item = "Trinket 2" });
+            this.build_box.Items.Add(new MyItem { Item = "Trinket 3" });
+            this.build_box.Items.Add(new MyItem { Item = "Trinket 4" });
         }
 
         private void ButtonGenerateBuild_Click(object sender, RoutedEventArgs e)
@@ -363,7 +379,7 @@ namespace SULFURBuildGenerator
             this.build_box.Items.Add(new MyItem { Item = "Gun", Selection = randomGun });
 
             // Attachment Randomizer
-            if ((bool)all_attachments.IsChecked == true)
+            if ((bool)allAttachmentsCheckbox.IsChecked == true)
             {
                 // Barrel Randomizer
                 Random randomBarrelInt = new Random();
@@ -427,38 +443,38 @@ namespace SULFURBuildGenerator
                     this.build_box.Items.Add(new MyItem { Item = "Rechamber", Selection = listRechamber[randomRechamberNumber] });
                 }
             }
-            if ((bool)barrels.IsChecked == true && (bool)all_attachments.IsChecked == false)
+            if ((bool)barrels.IsChecked == true && (bool)allAttachmentsCheckbox.IsChecked == false)
             {
                 Random randomBarrelInt = new Random();
                 int randomBarrelNumber = randomBarrelInt.Next(0, listBarrels.Count);
                 this.build_box.Items.Add(new MyItem { Item = "Barrel", Selection = listBarrels[randomBarrelNumber] });
             }
-            if ((bool)optics.IsChecked == true && (bool)all_attachments.IsChecked == false)
+            if ((bool)optics.IsChecked == true && (bool)allAttachmentsCheckbox.IsChecked == false)
             {
                 Random randomOpticInt = new Random();
                 int randomOpticNumber = randomOpticInt.Next(0, listOptics.Count);
                 this.build_box.Items.Add(new MyItem { Item = "Optic", Selection = listOptics[randomOpticNumber] });
             }
-            if ((bool)Laser.IsChecked == true && (bool)all_attachments.IsChecked == false)
+            if ((bool)Laser.IsChecked == true && (bool)allAttachmentsCheckbox.IsChecked == false)
             {
                 Random randomLaserInt = new Random();
                 int randomLaserNumber = randomLaserInt.Next(0, listLaser.Count);
                 this.build_box.Items.Add(new MyItem { Item = "Laser", Selection = listLaser[randomLaserNumber] });
             }
-            if ((bool)FiringMode.IsChecked == true && (bool)all_attachments.IsChecked == false)
+            if ((bool)FiringMode.IsChecked == true && (bool)allAttachmentsCheckbox.IsChecked == false)
             {
                 Random randomFireInt = new Random();
                 int randomFireNumber = randomFireInt.Next(0, listFiremode.Count);
                 this.build_box.Items.Add(new MyItem { Item = "Firemode", Selection = listFiremode[randomFireNumber] });
             }
-            if ((bool)Rechamber.IsChecked == true && (bool)all_attachments.IsChecked == false)
+            if ((bool)Rechamber.IsChecked == true && (bool)allAttachmentsCheckbox.IsChecked == false)
             {
                 Random randomRechamberInt = new Random();
                 int randomRechamberNumber = randomRechamberInt.Next(0, listRechamber.Count);
                 this.build_box.Items.Add(new MyItem { Item = "Rechamber", Selection = listRechamber[randomRechamberNumber] });
             }
 
-            // Enchantments
+            // Enchantment Randomizer
 
             if (enchantment_slider.Value > 0)
             {
@@ -571,6 +587,100 @@ namespace SULFURBuildGenerator
                 }
 
             }
+
+            // Equipment Randomizer
+            if (allEquipmentCheckbox.IsChecked == true)
+            {
+                // Add Head Equipment
+                Random randomHeadInt = new Random();
+                int randomHeadNumber = randomHeadInt.Next(0, listHeadEquipment.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Head Equipment", Selection = listHeadEquipment[randomHeadNumber] });
+
+                // Add Body Equipment
+                Random randomBodyInt = new Random();
+                int randomBodyNumber = randomBodyInt.Next(0, listBodyEquipment.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Body Equipment", Selection = listBodyEquipment[randomBodyNumber] });
+
+                // Add Left Foot Equipment
+                Random randomLFootInt = new Random();
+                int randomLFootNumber = randomLFootInt.Next(0, listFootEquipment.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Left Foot", Selection = listFootEquipment[randomLFootNumber] });
+
+                // Add Right Foot Equipment
+                Random randomRFootInt = new Random();
+                int randomRFootNumber = randomRFootInt.Next(0, listFootEquipment.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Right Foot", Selection = listFootEquipment[randomRFootNumber] });
+
+                // Add Trinket 1
+                Random randomTrinket1Int = new Random();
+                int randomTrinket1Number = randomTrinket1Int.Next(0, listTrinkets.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Trinket 1", Selection = listTrinkets[randomTrinket1Number] });
+
+                // Add Trinket 2
+                Random randomTrinket2Int = new Random();
+                int randomTrinket2Number = randomTrinket2Int.Next(0, listTrinkets.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Trinket 2", Selection = listTrinkets[randomTrinket2Number] });
+
+                // Add Trinket 3
+                Random randomTrinket3Int = new Random();
+                int randomTrinket3Number = randomTrinket3Int.Next(0, listTrinkets.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Trinket 3", Selection = listTrinkets[randomTrinket3Number] });
+
+                // Add Trinket 4
+                Random randomTrinket4Int = new Random();
+                int randomTrinket4Number = randomTrinket4Int.Next(0, listTrinkets.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Trinket 4", Selection = listTrinkets[randomTrinket4Number] });
+            }
+            if (headEquipmentCheckbox.IsChecked == true && (bool)allEquipmentCheckbox.IsChecked == false)
+            {
+                Random randomHeadInt = new Random();
+                int randomHeadNumber = randomHeadInt.Next(0, listHeadEquipment.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Head Equipment", Selection = listHeadEquipment[randomHeadNumber] });
+            }
+            if (bodyEquipmentCheckbox.IsChecked == true && (bool)allEquipmentCheckbox.IsChecked == false)
+            {
+                Random randomBodyInt = new Random();
+                int randomBodyNumber = randomBodyInt.Next(0, listBodyEquipment.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Body Equipment", Selection = listBodyEquipment[randomBodyNumber] });
+            }
+            if (leftFootEquipmentCheckbox.IsChecked == true && (bool)allEquipmentCheckbox.IsChecked == false)
+            {
+                Random randomLFootInt = new Random();
+                int randomLFootNumber = randomLFootInt.Next(0, listFootEquipment.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Left Foot", Selection = listFootEquipment[randomLFootNumber] });
+            }
+            if (rightFootEquipmentCheckbox.IsChecked == true && (bool)allEquipmentCheckbox.IsChecked == false)
+            {
+                Random randomRFootInt = new Random();
+                int randomRFootNumber = randomRFootInt.Next(0, listFootEquipment.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Right Foot", Selection = listFootEquipment[randomRFootNumber] });
+            }
+            if (trinket1EquipmentCheckbox.IsChecked == true && (bool)allEquipmentCheckbox.IsChecked == false)
+            {
+                // Add Trinket 1
+                Random randomTrinket1Int = new Random();
+                int randomTrinket1Number = randomTrinket1Int.Next(0, listTrinkets.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Trinket 1", Selection = listTrinkets[randomTrinket1Number] });
+            }
+            if (trinket2EquipmentCheckbox.IsChecked == true && (bool)allEquipmentCheckbox.IsChecked == false)
+            {
+                Random randomTrinket2Int = new Random();
+                int randomTrinket2Number = randomTrinket2Int.Next(0, listTrinkets.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Trinket 2", Selection = listTrinkets[randomTrinket2Number] });
+            }
+            if (trinket3EquipmentCheckbox.IsChecked == true && (bool)allEquipmentCheckbox.IsChecked == false)
+            {
+                Random randomTrinket3Int = new Random();
+                int randomTrinket3Number = randomTrinket3Int.Next(0, listTrinkets.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Trinket 3", Selection = listTrinkets[randomTrinket3Number] });
+            }
+            if (trinket4EquipmentCheckbox.IsChecked == true && (bool)allEquipmentCheckbox.IsChecked == false)
+            {
+                Random randomTrinket4Int = new Random();
+                int randomTrinket4Number = randomTrinket4Int.Next(0, listTrinkets.Count);
+                this.build_box.Items.Add(new MyItem { Item = "Trinket 4", Selection = listTrinkets[randomTrinket4Number] });
+            }
+
         }
 
         private void choose_scrolls_button_Checked(object sender, RoutedEventArgs e)
@@ -582,10 +692,24 @@ namespace SULFURBuildGenerator
         {
             this.scroll_dropdown.IsEnabled = false;
         }
+        private List<MyItem> listMyItem = new List<MyItem>();
+            private void build_box_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            {
+                foreach (MyItem item in e.RemovedItems)
+                {
+                    listMyItem.Remove(item);
+                }
+
+                foreach (MyItem item in e.AddedItems)
+                {
+                    listMyItem.Add(item);
+                }
+            }
     }
 
     internal class MyItem
     {
+        public string Done { get; set; }
         public string Item { get; set; }
         public string Name { get; set; }
         public string Selection { get; set; }
