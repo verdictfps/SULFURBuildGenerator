@@ -13,6 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Fredoka-Medium.ttf" />
+    <None Remove="Fonts\Fredoka-SemiBold.ttf" />
     <None Remove="Goblin Crosshair Guild Variant png.png" />
   </ItemGroup>
 
@@ -25,8 +27,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\Fredoka-Medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Fredoka-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Fredoka-SemiBold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Fonts\Fredoka.ttf" />
     <Resource Include="Goblin Crosshair Guild Variant png.png" />
+    <Resource Include="Resources\Fredoka-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

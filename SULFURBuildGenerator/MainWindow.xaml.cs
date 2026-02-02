@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Data;
 using System.Data.Common;
 using System.Drawing.Text;
+using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices;
+using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows;
@@ -14,12 +18,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace SULFURBuildGenerator
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+    
     public partial class MainWindow : Window
     {
         List<string> listOils = new List<string> { "Action Oil",
@@ -323,6 +330,7 @@ namespace SULFURBuildGenerator
         {
             // Clear Listview
             build_box.Items.Clear();
+            string randomGunCompare;
             string randomGun;
             randomGun = null;
             List<string> totalGuns = new List<string>();
@@ -372,11 +380,383 @@ namespace SULFURBuildGenerator
                 totalGuns = listGuns;
             }
 
+            // Build Gun Stats
+
+            //// P38 Dirk
+            Weapon weaponP38Dirk = new Weapon();
+            weaponP38Dirk.Name = "P38 Dirk";
+            weaponP38Dirk.Type = "Pistol";
+            weaponP38Dirk.AmmoType = "9mm";
+            weaponP38Dirk.Damage = 60;
+            weaponP38Dirk.Projectiles = 0;
+            weaponP38Dirk.RPM = 0;
+            weaponP38Dirk.Spread = 0;
+            weaponP38Dirk.SpreadModified = 0;
+            weaponP38Dirk.Durability = 2000;
+            weaponP38Dirk.BaseCritChance = (decimal)0.0;
+            weaponP38Dirk.ADSCritChance = (decimal)0.0;
+            weaponP38Dirk.Bounces = 0;
+            weaponP38Dirk.Penetrations = 0;
+            weaponP38Dirk.ReloadSpeed = (decimal)1.0;
+            weaponP38Dirk.RecoilBase = (decimal)0.0;
+            weaponP38Dirk.RecoilMult = 0;
+            weaponP38Dirk.CanADS = "Yes";
+            weaponP38Dirk.MoneyDrops = "Yes";
+            weaponP38Dirk.OrganDrops = "Yes";
+            weaponP38Dirk.LootDropChance = (decimal)1.0;
+            weaponP38Dirk.WeaponWeight = 5;
+            weaponP38Dirk.MovementSpeed = (decimal)1.0;
+            weaponP38Dirk.BulletConsumeChance = (decimal)1.0;
+            weaponP38Dirk.ExtraAmmoUseChance = (decimal)0.0;
+            weaponP38Dirk.BulletDrop = 0;
+            weaponP38Dirk.JumpPower = (decimal)1.0;
+            weaponP38Dirk.Drag = 0;
+            weaponP38Dirk.DurabilityUsage = 1;
+            //// Socom 9
+            Weapon weaponSocom9 = new Weapon();
+            weaponSocom9.Name = "Socom 9";
+            weaponSocom9.Type = "Pistol";
+            weaponSocom9.AmmoType = "";
+            weaponSocom9.Damage = 0;
+            weaponSocom9.Projectiles = 0;
+            weaponSocom9.RPM = 0;
+            weaponSocom9.Spread = 0;
+            weaponSocom9.SpreadModified = 0;
+            weaponSocom9.Durability = 0;
+            weaponSocom9.BaseCritChance = (decimal)0.0;
+            weaponSocom9.ADSCritChance = (decimal)0.0;
+            weaponSocom9.Bounces = 0;
+            weaponSocom9.Penetrations = 0;
+            weaponSocom9.ReloadSpeed = (decimal)1.0;
+            weaponSocom9.RecoilBase = (decimal)0.0;
+            weaponSocom9.RecoilMult = 0;
+            weaponSocom9.CanADS = "Yes";
+            weaponSocom9.MoneyDrops = "Yes";
+            weaponSocom9.OrganDrops = "Yes";
+            weaponSocom9.LootDropChance = (decimal)1.0;
+            weaponSocom9.WeaponWeight = 0;
+            weaponSocom9.MovementSpeed = (decimal)1.0;
+            weaponSocom9.BulletConsumeChance = (decimal)1.0;
+            weaponSocom9.ExtraAmmoUseChance = (decimal)0.0;
+            weaponSocom9.BulletDrop = 0;
+            weaponSocom9.JumpPower = (decimal)1.0;
+            weaponSocom9.Drag = 0;
+            weaponSocom9.DurabilityUsage = 1;
+            //// Star & Witness
+            Weapon weaponStarWitness = new Weapon();
+            weaponStarWitness.Name = "Star & Witness";
+            weaponStarWitness.Type = "Pistol";
+            weaponStarWitness.AmmoType = "";
+            weaponStarWitness.Damage = 0;
+            weaponStarWitness.Projectiles = 0;
+            weaponStarWitness.RPM = 0;
+            weaponStarWitness.Spread = 0;
+            weaponStarWitness.SpreadModified = 0;
+            weaponStarWitness.Durability = 0;
+            weaponStarWitness.BaseCritChance = (decimal)0.0;
+            weaponStarWitness.ADSCritChance = (decimal)0.0;
+            weaponStarWitness.Bounces = 0;
+            weaponStarWitness.Penetrations = 0;
+            weaponStarWitness.ReloadSpeed = (decimal)1.0;
+            weaponStarWitness.RecoilBase = (decimal)0.0;
+            weaponStarWitness.RecoilMult = 0;
+            weaponStarWitness.CanADS = "Yes";
+            weaponStarWitness.MoneyDrops = "Yes";
+            weaponStarWitness.OrganDrops = "Yes";
+            weaponStarWitness.LootDropChance = (decimal)1.0;
+            weaponStarWitness.WeaponWeight = 0;
+            weaponStarWitness.MovementSpeed = (decimal)1.0;
+            weaponStarWitness.BulletConsumeChance = (decimal)1.0;
+            weaponStarWitness.ExtraAmmoUseChance = (decimal)0.0;
+            weaponStarWitness.BulletDrop = 0;
+            weaponStarWitness.JumpPower = (decimal)1.0;
+            weaponStarWitness.Drag = 0;
+            weaponStarWitness.DurabilityUsage = 1;
+            //// Gravekeeper
+            Weapon weaponGravekeeper = new Weapon();
+            weaponGravekeeper.Name = "Gravekeeper";
+            weaponGravekeeper.Type = "Pistol";
+            weaponGravekeeper.AmmoType = "";
+            weaponGravekeeper.Damage = 0;
+            weaponGravekeeper.Projectiles = 0;
+            weaponGravekeeper.RPM = 0;
+            weaponGravekeeper.Spread = 0;
+            weaponGravekeeper.SpreadModified = 0;
+            weaponGravekeeper.Durability = 0;
+            weaponGravekeeper.BaseCritChance = (decimal)0.0;
+            weaponGravekeeper.ADSCritChance = (decimal)0.0;
+            weaponGravekeeper.Bounces = 0;
+            weaponGravekeeper.Penetrations = 0;
+            weaponGravekeeper.ReloadSpeed = (decimal)1.0;
+            weaponGravekeeper.RecoilBase = (decimal)0.0;
+            weaponGravekeeper.RecoilMult = 0;
+            weaponGravekeeper.CanADS = "Yes";
+            weaponGravekeeper.MoneyDrops = "Yes";
+            weaponGravekeeper.OrganDrops = "Yes";
+            weaponGravekeeper.LootDropChance = (decimal)1.0;
+            weaponGravekeeper.WeaponWeight = 0;
+            weaponGravekeeper.MovementSpeed = (decimal)1.0;
+            weaponGravekeeper.BulletConsumeChance = (decimal)1.0;
+            weaponGravekeeper.ExtraAmmoUseChance = (decimal)0.0;
+            weaponGravekeeper.BulletDrop = 0;
+            weaponGravekeeper.JumpPower = (decimal)1.0;
+            weaponGravekeeper.Drag = 0;
+            weaponGravekeeper.DurabilityUsage = 1;
+            //// Beck 8
+            Weapon weaponBeck8 = new Weapon();
+            weaponBeck8.Name = "Beck 8";
+            weaponBeck8.Type = "Pistol";
+            weaponBeck8.AmmoType = "";
+            weaponBeck8.Damage = 0;
+            weaponBeck8.Projectiles = 0;
+            weaponBeck8.RPM = 0;
+            weaponBeck8.Spread = 0;
+            weaponBeck8.SpreadModified = 0;
+            weaponBeck8.Durability = 0;
+            weaponBeck8.BaseCritChance = (decimal)0.0;
+            weaponBeck8.ADSCritChance = (decimal)0.0;
+            weaponBeck8.Bounces = 0;
+            weaponBeck8.Penetrations = 0;
+            weaponBeck8.ReloadSpeed = (decimal)1.0;
+            weaponBeck8.RecoilBase = (decimal)0.0;
+            weaponBeck8.RecoilMult = 0;
+            weaponBeck8.CanADS = "Yes";
+            weaponBeck8.MoneyDrops = "Yes";
+            weaponBeck8.OrganDrops = "Yes";
+            weaponBeck8.LootDropChance = (decimal)1.0;
+            weaponBeck8.WeaponWeight = 0;
+            weaponBeck8.MovementSpeed = (decimal)1.0;
+            weaponBeck8.BulletConsumeChance = (decimal)1.0;
+            weaponBeck8.ExtraAmmoUseChance = (decimal)0.0;
+            weaponBeck8.BulletDrop = 0;
+            weaponBeck8.JumpPower = (decimal)1.0;
+            weaponBeck8.Drag = 0;
+            weaponBeck8.DurabilityUsage = 1;
+            //// Salamander
+            Weapon weaponSalamander = new Weapon();
+            weaponSalamander.Name = "Salamander";
+            weaponSalamander.Type = "Pistol";
+            weaponSalamander.AmmoType = "";
+            weaponSalamander.Damage = 0;
+            weaponSalamander.Projectiles = 0;
+            weaponSalamander.RPM = 0;
+            weaponSalamander.Spread = 0;
+            weaponSalamander.SpreadModified = 0;
+            weaponSalamander.Durability = 0;
+            weaponSalamander.BaseCritChance = (decimal)0.0;
+            weaponSalamander.ADSCritChance = (decimal)0.0;
+            weaponSalamander.Bounces = 0;
+            weaponSalamander.Penetrations = 0;
+            weaponSalamander.ReloadSpeed = (decimal)1.0;
+            weaponSalamander.RecoilBase = (decimal)0.0;
+            weaponSalamander.RecoilMult = 0;
+            weaponSalamander.CanADS = "Yes";
+            weaponSalamander.MoneyDrops = "Yes";
+            weaponSalamander.OrganDrops = "Yes";
+            weaponSalamander.LootDropChance = (decimal)1.0;
+            weaponSalamander.WeaponWeight = 0;
+            weaponSalamander.MovementSpeed = (decimal)1.0;
+            weaponSalamander.BulletConsumeChance = (decimal)1.0;
+            weaponSalamander.ExtraAmmoUseChance = (decimal)0.0;
+            weaponSalamander.BulletDrop = 0;
+            weaponSalamander.JumpPower = (decimal)1.0;
+            weaponSalamander.Drag = 0;
+            weaponSalamander.DurabilityUsage = 1;
+            //// Bronco 89
+            Weapon weaponBronco89 = new Weapon();
+            weaponBronco89.Name = "Bronco 89";
+            weaponBronco89.Type = "Pistol";
+            weaponBronco89.AmmoType = "";
+            weaponBronco89.Damage = 0;
+            weaponBronco89.Projectiles = 0;
+            weaponBronco89.RPM = 0;
+            weaponBronco89.Spread = 0;
+            weaponBronco89.SpreadModified = 0;
+            weaponBronco89.Durability = 0;
+            weaponBronco89.BaseCritChance = (decimal)0.0;
+            weaponBronco89.ADSCritChance = (decimal)0.0;
+            weaponBronco89.Bounces = 0;
+            weaponBronco89.Penetrations = 0;
+            weaponBronco89.ReloadSpeed = (decimal)1.0;
+            weaponBronco89.RecoilBase = (decimal)0.0;
+            weaponBronco89.RecoilMult = 0;
+            weaponBronco89.CanADS = "Yes";
+            weaponBronco89.MoneyDrops = "Yes";
+            weaponBronco89.OrganDrops = "Yes";
+            weaponBronco89.LootDropChance = (decimal)1.0;
+            weaponBronco89.WeaponWeight = 0;
+            weaponBronco89.MovementSpeed = (decimal)1.0;
+            weaponBronco89.BulletConsumeChance = (decimal)1.0;
+            weaponBronco89.ExtraAmmoUseChance = (decimal)0.0;
+            weaponBronco89.BulletDrop = 0;
+            weaponBronco89.JumpPower = (decimal)1.0;
+            weaponBronco89.Drag = 0;
+            weaponBronco89.DurabilityUsage = 1;
+            //// Flicker
+            Weapon weaponFlicker = new Weapon();
+            weaponFlicker.Name = "Flicker";
+            weaponFlicker.Type = "Pistol";
+            weaponFlicker.AmmoType = "";
+            weaponFlicker.Damage = 0;
+            weaponFlicker.Projectiles = 0;
+            weaponFlicker.RPM = 0;
+            weaponFlicker.Spread = 0;
+            weaponFlicker.SpreadModified = 0;
+            weaponFlicker.Durability = 0;
+            weaponFlicker.BaseCritChance = (decimal)0.0;
+            weaponFlicker.ADSCritChance = (decimal)0.0;
+            weaponFlicker.Bounces = 0;
+            weaponFlicker.Penetrations = 0;
+            weaponFlicker.ReloadSpeed = (decimal)1.0;
+            weaponFlicker.RecoilBase = (decimal)0.0;
+            weaponFlicker.RecoilMult = 0;
+            weaponFlicker.CanADS = "Yes";
+            weaponFlicker.MoneyDrops = "Yes";
+            weaponFlicker.OrganDrops = "Yes";
+            weaponFlicker.LootDropChance = (decimal)1.0;
+            weaponFlicker.WeaponWeight = 0;
+            weaponFlicker.MovementSpeed = (decimal)1.0;
+            weaponFlicker.BulletConsumeChance = (decimal)1.0;
+            weaponFlicker.ExtraAmmoUseChance = (decimal)0.0;
+            weaponFlicker.BulletDrop = 0;
+            weaponFlicker.JumpPower = (decimal)1.0;
+            weaponFlicker.Drag = 0;
+            weaponFlicker.DurabilityUsage = 1;
+            //// Unknown
+            Weapon weaponUnknown = new Weapon();
+            weaponUnknown.Name = "Unknown";
+            weaponUnknown.Type = "Pistol";
+            weaponUnknown.AmmoType = "";
+            weaponUnknown.Damage = 0;
+            weaponUnknown.Projectiles = 0;
+            weaponUnknown.RPM = 0;
+            weaponUnknown.Spread = 0;
+            weaponUnknown.SpreadModified = 0;
+            weaponUnknown.Durability = 0;
+            weaponUnknown.BaseCritChance = (decimal)0.0;
+            weaponUnknown.ADSCritChance = (decimal)0.0;
+            weaponUnknown.Bounces = 0;
+            weaponUnknown.Penetrations = 0;
+            weaponUnknown.ReloadSpeed = (decimal)1.0;
+            weaponUnknown.RecoilBase = (decimal)0.0;
+            weaponUnknown.RecoilMult = 0;
+            weaponUnknown.CanADS = "Yes";
+            weaponUnknown.MoneyDrops = "Yes";
+            weaponUnknown.OrganDrops = "Yes";
+            weaponUnknown.LootDropChance = (decimal)1.0;
+            weaponUnknown.WeaponWeight = 0;
+            weaponUnknown.MovementSpeed = (decimal)1.0;
+            weaponUnknown.BulletConsumeChance = (decimal)1.0;
+            weaponUnknown.ExtraAmmoUseChance = (decimal)0.0;
+            weaponUnknown.BulletDrop = 0;
+            weaponUnknown.JumpPower = (decimal)1.0;
+            weaponUnknown.Drag = 0;
+            weaponUnknown.DurabilityUsage = 1;
+            //// Hell 'N' Back
+            Weapon weaponHellNBack = new Weapon();
+            weaponHellNBack.Name = "Hell 'N' Back";
+            weaponHellNBack.Type = "Pistol";
+            weaponHellNBack.AmmoType = "";
+            weaponHellNBack.Damage = 0;
+            weaponHellNBack.Projectiles = 0;
+            weaponHellNBack.RPM = 0;
+            weaponHellNBack.Spread = 0;
+            weaponHellNBack.SpreadModified = 0;
+            weaponHellNBack.Durability = 0;
+            weaponHellNBack.BaseCritChance = (decimal)0.0;
+            weaponHellNBack.ADSCritChance = (decimal)0.0;
+            weaponHellNBack.Bounces = 0;
+            weaponHellNBack.Penetrations = 0;
+            weaponHellNBack.ReloadSpeed = (decimal)1.0;
+            weaponHellNBack.RecoilBase = (decimal)0.0;
+            weaponHellNBack.RecoilMult = 0;
+            weaponHellNBack.CanADS = "Yes";
+            weaponHellNBack.MoneyDrops = "Yes";
+            weaponHellNBack.OrganDrops = "Yes";
+            weaponHellNBack.LootDropChance = (decimal)1.0;
+            weaponHellNBack.WeaponWeight = 0;
+            weaponHellNBack.MovementSpeed = (decimal)1.0;
+            weaponHellNBack.BulletConsumeChance = (decimal)1.0;
+            weaponHellNBack.ExtraAmmoUseChance = (decimal)0.0;
+            weaponHellNBack.BulletDrop = 0;
+            weaponHellNBack.JumpPower = (decimal)1.0;
+            weaponHellNBack.Drag = 0;
+            weaponHellNBack.DurabilityUsage = 1;
+            //// Cavalier
+            Weapon weaponCavalier = new Weapon();
+            weaponCavalier.Name = "Cavalier";
+            weaponCavalier.Type = "Pistol";
+            weaponCavalier.AmmoType = "";
+            weaponCavalier.Damage = 0;
+            weaponCavalier.Projectiles = 0;
+            weaponCavalier.RPM = 0;
+            weaponCavalier.Spread = 0;
+            weaponCavalier.SpreadModified = 0;
+            weaponCavalier.Durability = 0;
+            weaponCavalier.BaseCritChance = (decimal)0.0;
+            weaponCavalier.ADSCritChance = (decimal)0.0;
+            weaponCavalier.Bounces = 0;
+            weaponCavalier.Penetrations = 0;
+            weaponCavalier.ReloadSpeed = (decimal)1.0;
+            weaponCavalier.RecoilBase = (decimal)0.0;
+            weaponCavalier.RecoilMult = 0;
+            weaponCavalier.CanADS = "Yes";
+            weaponCavalier.MoneyDrops = "Yes";
+            weaponCavalier.OrganDrops = "Yes";
+            weaponCavalier.LootDropChance = (decimal)1.0;
+            weaponCavalier.WeaponWeight = 0;
+            weaponCavalier.MovementSpeed = (decimal)1.0;
+            weaponCavalier.BulletConsumeChance = (decimal)1.0;
+            weaponCavalier.ExtraAmmoUseChance = (decimal)0.0;
+            weaponCavalier.BulletDrop = 0;
+            weaponCavalier.JumpPower = (decimal)1.0;
+            weaponCavalier.Drag = 0;
+            weaponCavalier.DurabilityUsage = 1;
+
+            List<Weapon> allWeaponStats = new List<Weapon> { weaponP38Dirk, weaponSocom9, weaponStarWitness, weaponGravekeeper, weaponBeck8, weaponSalamander, weaponBronco89, weaponFlicker, weaponUnknown, weaponHellNBack, weaponCavalier };
+
             // Gun Randomizer
             Random randomGunInt = new Random();
             int randomGunNumber = randomGunInt.Next(0, totalGuns.Count);
-            randomGun = totalGuns[randomGunNumber];
-            this.build_box.Items.Add(new MyItem { Item = "Gun", Selection = randomGun });
+            randomGunCompare = totalGuns[randomGunNumber];
+
+            foreach (var weapon in allWeaponStats)
+            {
+                if (weapon.Name == randomGunCompare)
+                {
+                    randomGun = randomGunCompare;
+                    this.build_box.Items.Add(new MyItem { Item = "Gun", Selection = randomGun });
+                    this.cardWeaponName.Text = weapon.Name;
+                    this.cardWeaponType.Text = $"Type: {weapon.Type}";
+                    this.cardAmmoType.Text = $"Ammo Type: {weapon.AmmoType}";
+                    this.cardDamage.Text = $"Damage: {weapon.Damage}";
+                    this.cardRPM.Text = $"RPM: {weapon.RPM}";
+                    this.cardSpread.Text = $"Spread: {weapon.Spread}";
+                    this.cardDurability.Text = $"Durability: {weapon.Durability}";
+                    this.cardBaseCritChance.Text = $"Base Crit Chance: {weapon.BaseCritChance}";
+                    this.cardADSCritChance.Text = $"ADS Crit Chance: {weapon.ADSCritChance}";
+                    this.cardBounces.Text = $"Bounces: {weapon.Bounces}";
+                    this.cardPenetrations.Text = $"Penetrations: {weapon.Penetrations}";
+                    this.cardReloadSpeed.Text = $"Reload Speed: {weapon.ReloadSpeed}";
+                    this.cardRecoil.Text = $"Recoil: idfk";
+                    this.cardCanADS.Text = $"Can ADS: {weapon.CanADS}";
+                    this.cardMoneyDrops.Text = $"Money Drops: {weapon.MoneyDrops}";
+                    this.cardOrganDrops.Text = $"Organ Drops: {weapon.OrganDrops}";
+                    this.cardLootDropChance.Text = $"Loot Drop Chance: {weapon.LootDropChance}";
+                    this.cardWeaponWeight.Text = $"Weapon Weight: {weapon.WeaponWeight}";
+                    this.cardMovementSpeed.Text = $"Movement Speed: {weapon.MovementSpeed}";
+                    this.cardBulletConsumeChance.Text = $"Bullet Consume Chance: {weapon.BulletConsumeChance}";
+                    this.cardExtraAmmoUseChance.Text = $"Extra Ammo Use Chance: {weapon.ExtraAmmoUseChance}";
+                    this.cardBulletDrop.Text = $"Bullet Drop: {weapon.BulletDrop}";
+                    this.cardJumpPower.Text = $"Jump Power: {weapon.JumpPower}";
+                    this.cardDrag.Text = $"Drag: {weapon.Drag}";
+                    this.cardDurabilityUsage.Text = $"Durability Usage: {weapon.DurabilityUsage}";
+                }
+            }
+
+
+
+            
 
             // Attachment Randomizer
             if ((bool)allAttachmentsCheckbox.IsChecked == true)
@@ -714,4 +1094,6 @@ namespace SULFURBuildGenerator
         public string Name { get; set; }
         public string Selection { get; set; }
     }
+ 
+
 }
