@@ -6,20 +6,14 @@ namespace SULFURBuildGenerator
 {
     class Chamber
     {
-        public string AmmoType;
+        public string Name { get; set; }
+
+        public string AmmoType { get; set; }
 
         // Weapon DamageMult is applied to this
-        public int Damage;
+        public double Damage { get; set; }
 
         // Projectile count for the chisel, to replace Weapon Projectiles property
-        public int Projectiles;
-
-
-        public Chamber()
-        {
-            AmmoType = "";
-            Damage = 0;
-            Projectiles = 1;
-        }
+        public int Projectiles { get; set; }
     }
 }
