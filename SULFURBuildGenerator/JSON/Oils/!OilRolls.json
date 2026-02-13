@@ -1,5 +1,5 @@
 {
-  "BulletConsumeChance": "0.0",
+  "AmmoConsumeChance": "0.0",
   "Bounces": "0",
   "BulletDrop": "0",
   "BulletSpeed": "0.0",
@@ -23,5 +23,7 @@
   "SpreadAdd": "0.0",
   "SpreadMult": "0.0",
   "Drag": "0.0",
-  "DurabilityUsage": "1"
+  "DurabilityUsage": "1",
+  "BulletBounciness": "0.0",
+  "MovingAccuracy": "1.0"
 }

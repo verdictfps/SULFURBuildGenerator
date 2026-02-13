@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 
 namespace SULFURBuildGenerator
@@ -16,13 +18,17 @@ namespace SULFURBuildGenerator
 
         public string TypePositive3 { get; set; }
 
+        public string TypePositive4 { get; set; }
+
         public string TypeNegative1 { get; set; }
 
         public string TypeNegative2 { get; set; }
 
         public string TypeNegative3 { get; set; }
 
-        public double BulletConsumeChance { get; set; }
+        public string TypeNegative4 { get; set; }
+
+        public double AmmoConsumeChance { get; set; }
 
         public double Bounces { get; set; }
 
@@ -71,5 +77,9 @@ namespace SULFURBuildGenerator
         public double Drag { get; set; }
 
         public double DurabilityUsage { get; set; }
+
+        public double BulletBounciness { get; set; }
+
+        public double MovingAccuracy { get; set; }
     }
 }

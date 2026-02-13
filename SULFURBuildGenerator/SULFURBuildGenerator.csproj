@@ -16,6 +16,17 @@
     <None Remove="Fonts\Fredoka-Medium.ttf" />
     <None Remove="Fonts\Fredoka-SemiBold.ttf" />
     <None Remove="Goblin Crosshair Guild Variant png.png" />
+    <None Remove="Images\Guns\Pistols\Beck 8.png" />
+    <None Remove="Images\Guns\Pistols\Bronco 89.png" />
+    <None Remove="Images\Guns\Pistols\Cavalier.png" />
+    <None Remove="Images\Guns\Pistols\Flicker.png" />
+    <None Remove="Images\Guns\Pistols\Gravekeeper.png" />
+    <None Remove="Images\Guns\Pistols\Hell %27N%27 Back.png" />
+    <None Remove="Images\Guns\Pistols\P38 Dirk.png" />
+    <None Remove="Images\Guns\Pistols\Salamander.png" />
+    <None Remove="Images\Guns\Pistols\Socom 9.png" />
+    <None Remove="Images\Guns\Pistols\Star &amp; Witness.png" />
+    <None Remove="Images\Guns\Pistols\Unknown.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +50,39 @@
     </Resource>
     <Resource Include="Fonts\Fredoka.ttf" />
     <Resource Include="Goblin Crosshair Guild Variant png.png" />
+    <Resource Include="Images\Guns\Pistols\Beck 8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Guns\Pistols\Bronco 89.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Guns\Pistols\Cavalier.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Guns\Pistols\Flicker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Guns\Pistols\Gravekeeper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Guns\Pistols\Hell 'N' Back.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Guns\Pistols\P38 Dirk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Guns\Pistols\Salamander.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Guns\Pistols\Socom 9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Guns\Pistols\Star &amp; Witness.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Guns\Pistols\Unknown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Fredoka-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -60,6 +104,87 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="JSON\Attachments\!AttachmentStats.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\A12C Muzzle Brake.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\Aftermarket Haukland Silencer.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\Barrel Extension 2in.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\Barrel Extension 4in.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\Barrel Extension 6in.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\Breznik BMD %28Tactical%29.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\Breznik BMD.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\Haukland Flash Hider.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\Haukland Silencer.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\Improvised Barrel Extension.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\M87 Albatross Silencer.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\Shrouded Barrel Extension.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\SR-P3 Silencer.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Barrels\Warmage Compensator.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Firemodes\Gun Crank.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Firemodes\Priming Bolt.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Lasers\Green.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Lasers\Red.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Lasers\Yellow.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Optics\Assault Scope.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Optics\Compact Sight.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Optics\Holographic Sight.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Optics\Hunting Scope.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Optics\Recon Scope.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Optics\Reflex Sight.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\Attachments\Optics\Sniper Scope.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="JSON\Chamber\Chamber Chisel - .50 BMG.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -735,6 +860,9 @@
     <None Update="JSON\Oils\Zooming Oil.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="JSON\Scrolls\Scrolls.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="JSON\Weapons\!WeaponOriginal.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -775,7 +903,11 @@
 
   <ItemGroup>
     <Folder Include="JSON\Armor\" />
-    <Folder Include="JSON\Attachments\" />
+    <Folder Include="JSON\Attachments\Barrels\" />
+    <Folder Include="JSON\Attachments\Lasers\" />
+    <Folder Include="JSON\Attachments\Firemodes\" />
+    <Folder Include="JSON\Attachments\Optics\" />
+    <Folder Include="JSON\Scrolls\" />
     <Folder Include="JSON\Trinkets\" />
     <Folder Include="JSON\Oils\" />
   </ItemGroup>

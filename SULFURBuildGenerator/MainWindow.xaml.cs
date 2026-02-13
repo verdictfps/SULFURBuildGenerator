@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
@@ -42,9 +44,12 @@ namespace SULFURBuildGenerator
     public partial class MainWindow : Window
     {
 
+
+
         
-        List<string> listOils = new List<string> { 
-    "Action Oil", 
+       
+        List<string> listOils = new List<string> {
+    "Action Oil",
     "Add Damage Oil",
     "Aimless Oil",
     "Airsoft Oil",
@@ -250,7 +255,6 @@ namespace SULFURBuildGenerator
     "Turbulence Oil",
     "Twice Oil",
     "Two Time Oil",
-    "Unlabeled Oil",
     "Untechnical Oil",
     "Vasectomy Oil",
     "Vegan Oil",
@@ -262,9 +266,241 @@ namespace SULFURBuildGenerator
     "Whos Counting Oil",
     "Wobble Oil",
     "Zero Fucks Oil",
-    "Zooming Oil",*/
+    "Zooming Oil"*/
 };
- 
+        List<string> listOilCombo = new List<string> {
+    "Boulder Oil",
+    "Hyper Lead Oil",
+        };
+        List<string> listOilAmmo = new List<string> {
+    "Bulk Oil",
+    "Carefree Oil",
+    "Cheap Oil",
+    "Do-over Oil",
+    "Food Stamp Oil",
+    "Heavy Pockets Oil",
+    "Helium Oil",
+    "Keep Oil",
+    "Last Drop Oil",
+    "Mosquito Oil",
+    "Plop Back Oil",
+    "Recycle Oil",
+    "Satiety Oil",
+    "Saviour Oil",
+    "Walk Easy Oil",
+    "Whos Counting Oil", };
+        List<string> listOilCrit = new List<string> {
+    "Aimless Oil",
+    "Artery Oil",
+    "Axe Oil",
+    "Blindfold Oil",
+    "Confidence Oil",
+    "Critical Oil",
+    "Gambler Oil",
+    "Happy Accident Oil",
+    "Hunter Oil",
+    "Hustler Oil",
+    "Low Roller Oil",
+    "Manifestation Oil",
+    "No Need Oil",
+    "Out of the Box Oil",
+    "Puncture Oil",
+    "Slotmachine Oil",
+    "Smart Bullet Oil",};
+        List<string> listOilBounce = new List<string> {
+    "Arkanoid Oil",
+    "Bandit Oil",
+    "Cartoon Oil",
+    "Flea Oil",
+    "Hoop Oil",
+    "Imperfect Oil",
+    "Lazy Oil",
+    "Longshot Oil",
+    "Perfect Bounce Oil",
+    "Pool Oil",
+    "Rebound Oil",
+    "Ricochet Oil",
+    "Scramble Oil",
+    "Sherlock Oil",
+    "Skip Oil",
+    "Synchronicity Oil",
+    "Wobble Oil", };
+        List<string> listOilSpeed = new List<string> {
+    "Arrow Oil",
+    "Assassin Dart Oil",
+    "Dart Oil",
+    "Delayed Hyper Tube Oil",
+    "Diesel Oil",
+    "Extra Powder Oil",
+    "Fast Bet Oil",
+    "Instant Oil",
+    "Kinetic Oil",
+    "Micro Wing Oil",
+    "Tight Barrel Oil",
+    "Turbulence Oil",
+    "Velocity Oil",
+    "Whim Oil",
+    "Zooming Oil", };
+        List<string> listOilAddDam = new List<string> {
+    "Add Damage Oil",
+    "Ascetic Oil",
+    "Big Oil",
+    "Brute Oil",
+    "Discharge Oil",
+    "Disposable Oil",
+    "Expander Oil",
+    "Fidget Oil",
+    "Frugal Oil",
+    "Great Oil",
+    "Judgement Oil",
+    "Kicker Oil",
+    "Late Boom Oil",
+    "Potshot Oil",
+    "Seated Oil",
+    "Sender Oil",
+    "Solid Oil",};
+        List<string> listOilMultDam = new List<string> {
+    "Complicated Oil",
+    "Damage Oil",
+    "Dum Dum Oil",
+    "First Blood Oil",
+    "Franciscan Oil",
+    "Glass Cannon Oil",
+    "Grounded Oil",
+    "Heavy Oil",
+    "Hip Blaster Oil",
+    "Launcher Oil",
+    "Overclock Oil",
+    "Puncher Oil",
+    "Slow Punch Oil",
+    "Spartan Oil",
+    "Terminator Oil",};
+        List<string> listOilDur = new List<string> {
+    "Dense Oil",
+    "Detune Oil",
+    "Feature Gun Oil",
+    "Gentle Oil",
+    "Hefty Oil",
+    "High Grade Oil",
+    "Inherited Oil",
+    "Release Oil",
+    "Rigid System Oil",
+    "Robust Mechanics Oil",
+    "Rubber Oil",
+    "Seated Fit Oil",
+    "Sensible Oil",
+    "Slippy Coating Oil",
+    "Soft Bullet Oil",
+    "Stiffy Fit Oil",
+    "Trusty Old Oil",};
+        List<string> listOilPen = new List<string> {
+    "Bad Planet Oil",
+    "Bystander Oil",
+    "Collateral Oil",
+    "Considerate Oil",
+    "Farsighted Oil",
+    "Heavy Lead Oil",
+    "Inconsiderate Oil",
+    "Jungian Oil",
+    "Needleye Oil",
+    "Overdose Oil",
+    "Penetration Oil",
+    "Rigor Oil",
+    "Sect Oil",
+    "Surgical Laser Oil",
+    "Too Much Oil",
+    "Untechnical Oil",
+    "Vasectomy Oil",};
+        List<string> listOilProj = new List<string> {
+    "Black Friday Oil",
+    "Bombard Oil",
+    "Boomstick Oil",
+    "Careless Splitter Oil",
+    "Division Oil",
+    "Double Nothing Oil",
+    "Elephant Oil",
+    "Gemini Oil",
+    "Matrix Oil",
+    "Multichamber Oil",
+    "Multishot Oil",
+    "Parallel Mag Oil",
+    "Scatter Oil",
+    "Shredder Oil",
+    "Suppressive Oil",
+    "Tandem Oil",
+    "Twice Oil",
+    "Two Time Oil",};
+        List<string> listOilRecoil = new List<string> {
+    "Braced Oil",
+    "Casual Oil",
+    "Contained Force Oil",
+    "Easy Oil",
+    "Easy Plop Oil",
+    "Flow Funnel Oil",
+    "Less Recoil Oil",
+    "Modern Technology Oil",
+    "Peashooter Oil",
+    "Purse Gun Oil",
+    "Ready Oil",
+    "Relax Oil",
+    "Safety Oil",
+    "Stability Oil",
+    "Stable Hip Oil",
+    "Tension Oil",
+    "Vegetable Oil",};
+        List<string> listOilReload = new List<string> {
+    "Action Oil",
+    "Airsoft Oil",
+    "Compo Oil",
+    "Cycle Oil",
+    "Double Lock Oil",
+    "Dynamic Oil",
+    "Gunslinger Oil",
+    "Fidget Lord Oil",
+    "Main Discipline Oil",
+    "Main Focus Oil",
+    "Nerf Oil",
+    "Reload Oil",
+    "Rush Job Oil",
+    "Shaved Clip Oil",
+    "Speed Trade Oil",
+    "Tactical Oil",
+    "Task Oil",
+    "Tech Support Oil", };
+        List<string> listOilRPM = new List<string> {
+    "Attack Speed Oil",
+    "BB Oil",
+    "Blurt Oil",
+    "Bolt Oil",
+    "Double Fire Oil",
+    "Fragile System Oil",
+    "Lightweight Oil",
+    "Machine Oil",
+    "No Look Oil",
+    "Perforate Oil",
+    "Rapid Internals Oil",
+    "Rookie Oil",
+    "Shower Oil",
+    "Spitter Oil",
+    "Stationary Oil",
+    "Waster Oil",
+    "Zero Fucks Oil",};
+        List<string> listOilSpread = new List<string> {
+    "Altruistic Oil",
+    "Artillery Oil",
+    "Bowl Oil",
+    "Careful Oil",
+    "Dead Center Oil",
+    "Exotic Barrel Oil",
+    "Hip Marksman Oil",
+    "Lost In Focus Oil",
+    "Plinker Oil",
+    "Shellman Oil",
+    "Slick Oil",
+    "Spread Oil",
+    "Stoic Oil",
+    "Thorough Oil",
+    "Vegan Oil",};
 
         List<string> listAllScrolls = new List<string> { "Scroll of Dark", "Scroll of Earth", "Scroll of Embers", "Scroll of Frostbite", "Scroll of Light", "Scroll of Nature", "Scroll of Plague", "Scroll of Surge", "Scroll of Water", "Scroll of Aftershock", "Scroll of Chain Lightning", "Scroll of Chaos Strike", "Scroll of Charm", "Scroll of Corpse Explosion", "Scroll of Crusader", "Scroll of Explosions", "Scroll of Fear", "Scroll of Flame Thrower", "Scroll of Holy Fire", "Scroll of Holy Purge", "Scroll of Lava", "Scroll of Least Resistance", "Scroll of Noxiosa", "Scroll of Pesticide", "Scroll of Petrification", "Scroll of Petroleum", "Scroll of Poison Blood", "Scroll of Prism", "Scroll of Rocket Launcher", "Scroll of Slush", "Scroll of Sacrifice", "Scroll of Storm Surge", "Scroll of Thunderbolt", "Scroll of Toxic Lobotomy", "Scroll of Voodoo" };
 
@@ -282,7 +518,7 @@ namespace SULFURBuildGenerator
 
         List<string> listSMGs = new List<string> { "Drifter 9", "Vrede", "Ploika Compact", "Ferryman", "M3 Termite", "Deathstar PG", "Valet" };
 
-        List<string> listARs = new List<string> { "Corpsemaker", "Catacoil Rapid X", "Type 80 Typhoon", "M11A2 Fisk", "Wingman"};
+        List<string> listARs = new List<string> { "Corpsemaker", "Catacoil Rapid X", "Type 80 Typhoon", "M11A2 Fisk", "Wingman" };
 
         List<string> listLMGs = new List<string> { "Rektor 100rd", "Duhar", "Neuraxis F22" };
 
@@ -290,11 +526,11 @@ namespace SULFURBuildGenerator
 
         List<string> listSnipers = new List<string> { "Rokua .308", "Dolphin 99", "D4RT", "Impala Gravita", "Longboy" };
 
-        List<string> listBarrels = new List<string> { "A12C Muzzle Brake", "Aftermarket Haukland Silencer", "Barrel Extension 2\"", "Barrel Extension 4\"", "Barrel Extension 6\"", "Breznik BMD", "Breznik BMD (Tactical)", "Haukland Flash Hider", "Haukland Silencer", "Improvised Barrel Extension", "M87 \"Albatross\" Silencer", "SR-P3 Silencer", "Shrouded Barrel Extension", "Warmage Compensator" };
+        List<string> listBarrels = new List<string> { "A12C Muzzle Brake", "Aftermarket Haukland Silencer", "Barrel Extension 2in", "Barrel Extension 4in", "Barrel Extension 6in", "Breznik BMD", "Breznik BMD (Tactical)", "Haukland Flash Hider", "Haukland Silencer", "Improvised Barrel Extension", "M87 Albatross Silencer", "SR-P3 Silencer", "Shrouded Barrel Extension", "Warmage Compensator" };
 
         List<string> listOptics = new List<string> { "Assault Scope", "Compact Sight", "Holographic Sight", "Hunting Scope", "Recon Scope", "Reflex Sight", "Sniper Scope" };
 
-        List<string> listLaser = new List<string> { "OrangeRed", "Lime", "Yellow" };
+        List<string> listLaser = new List<string> { "Red", "Green", "Yellow" };
 
         List<string> listFiremode = new List<string> { "Gun Crank", "Priming Bolt" };
 
@@ -320,21 +556,233 @@ namespace SULFURBuildGenerator
 
         public MainWindow()
         {
-            // Creates a bunch of json files for oils. i know, it's fucking insane, but im bad at this
-            /*foreach (string oil in listOils)
-            {
-                string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Oils\\{oil}.json";
-                var settings = new JsonSerializerSettings
-                {
-                    Formatting = Formatting.Indented
-                };
-                var data = new { Name = oil, TypePositive1 = "None", TypePositive2 = "None", TypeNegative1 = "None", TypeNegative2 = "None", BulletConsumeChance = "0.0", Bounces = "0.0", BulletDrop = "0.0", BulletSpeed = "0.0", ExtraAmmoUseChance = "0.0", BaseCritChance = "0.0", DamageAdd = "0.0", DamageMult = "0.0", CanADS = "Yes", JumpPower = "0.0", LootDropChance = "0.0", DurabilityMult = "0.0", MovementSpeedMult = "0.0", MoneyDrops = "Yes", OrganDrops = "Yes", Penetrations = "0.0", ProjectileMult = "0.0", RPM = "0.0", RecoilAdd = "0.0", RecoilMult = "0.0", ReloadSpeed = "0.0", SpreadAdd = "0.0", SpreadMult = "0.0", Drag = "0.0", DurabilityUsage = "1.0" };
-                string jsonString = JsonConvert.SerializeObject(data, settings);
-                //File.Create($"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Oils\\{oil}.json");
-                File.WriteAllText(fileName, jsonString);
-            }*/
+
+
 
             InitializeComponent();
+            
+            var vm = new ViewModel();
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "None",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "Random - All",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "Random - Tier 1",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Dark",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Earth",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Embers",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Frostbite",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Light",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Nature",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Plague",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Surge",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Water",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "Random - Tier 2",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Aftershock",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Chain Lightning",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Chaos Strike",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Charm",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Corpse Explosion",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Crusader",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Explosions",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Fear",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Flame Thrower",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Holy Fire",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Holy Purge",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Lava",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Least Resistance",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Noxiosa",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Pesticide",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Petrification",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Petroleum",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Poison Blood",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Prism",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Rocket Launcher",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Slush",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Sacrifice",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Thunderbolt",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Toxic Lobotomy",
+            });
+            vm.Scrolls.Add(new ScrollItem
+            {
+                Name = "     Voodoo",
+            });
+
+            vm.SelectedScroll = vm.Scrolls[0];
+
+            DataContext = vm;
+
+
+                // Creates a bunch of json files for oils. i know, it's fucking insane, but im bad at this
+                /*foreach (string oil in listOils)
+                {
+                    string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Oils\\{oil}.json";
+                    var settings = new JsonSerializerSettings
+                    {
+                        Formatting = Formatting.Indented
+                    };
+                    var data = new { Name = oil, TypePositive1 = "None", TypePositive2 = "None", TypeNegative1 = "None", TypeNegative2 = "None", AmmoConsumeChance = "0.0", Bounces = "0.0", BulletDrop = "0.0", BulletSpeed = "0.0", ExtraAmmoUseChance = "0.0", BaseCritChance = "0.0", DamageAdd = "0.0", DamageMult = "0.0", CanADS = "Yes", JumpPower = "0.0", LootDropChance = "0.0", DurabilityMult = "0.0", MovementSpeedMult = "0.0", MoneyDrops = "Yes", OrganDrops = "Yes", Penetrations = "0.0", ProjectileMult = "0.0", RPM = "0.0", RecoilAdd = "0.0", RecoilMult = "0.0", ReloadSpeed = "0.0", SpreadAdd = "0.0", SpreadMult = "0.0", Drag = "0.0", DurabilityUsage = "1.0" };
+                    string jsonString = JsonConvert.SerializeObject(data, settings);
+                    File.WriteAllText(fileName, jsonString);
+                }
+
+                // Attachment json generation
+                foreach (string barrel in listBarrels)
+               {
+                   string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Attachments\\Barrels\\{barrel}.json";
+                   var settings = new JsonSerializerSettings
+                   {
+                       Formatting = Formatting.Indented
+                   };
+                   var data = new { Name = barrel, Type = "Barrel", SpreadAdd = "0.0", MovementSpeedMult = "0.0", };
+                   string jsonString = JsonConvert.SerializeObject(data, settings);
+                   File.WriteAllText(fileName, jsonString);
+               }
+
+                foreach (string optic in listOptics)
+               {
+                   string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Attachments\\Optics\\{optic}.json";
+                   var settings = new JsonSerializerSettings
+                   {
+                       Formatting = Formatting.Indented
+                   };
+                   var data = new { Name = optic, Type = "Optic", BaseCritChance = "0.0" };
+                   string jsonString = JsonConvert.SerializeObject(data, settings);
+                   File.WriteAllText(fileName, jsonString);
+               }
+
+                foreach (string laser in listLaser)
+             {
+                 string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Attachments\\Lasers\\{laser}.json";
+                 var settings = new JsonSerializerSettings
+                 {
+                     Formatting = Formatting.Indented
+                 };
+                 var data = new { Name = laser, Type = "Laser", MovementAccuracy = "0.0" };
+                 string jsonString = JsonConvert.SerializeObject(data, settings);
+                 File.WriteAllText(fileName, jsonString);
+             }
+
+                foreach (string firemode in listFiremode)
+                {
+                    string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Attachments\\Firemodes\\{firemode}.json";
+                    var settings = new JsonSerializerSettings
+                    {
+                        Formatting = Formatting.Indented
+                    };
+                    var data = new { Name = firemode, Type = "Firemode", DamageMult = "0.0", SpreadAdd = "0.0" };
+                    string jsonString = JsonConvert.SerializeObject(data, settings);
+                    File.WriteAllText(fileName, jsonString);
+                }*/
+
+                InitializeComponent();
             this.build_box.Items.Add(new MyItem { Item = "Gun", Selection = "None" });
             this.build_box.Items.Add(new MyItem { Item = "Barrel", Selection = "None" });
             this.build_box.Items.Add(new MyItem { Item = "Optic", Selection = "None" });
@@ -384,11 +832,12 @@ namespace SULFURBuildGenerator
             randomGun = null;
             List<string> totalGuns = new List<string>();
             // Create Gun Pool
-            if ((bool)Pistols.IsChecked == true && (bool)All_Guns.IsChecked == false)
+            if (comboboxWeapon.Text == "Pistols")
             {
                 totalGuns = listPistols.Concat(listPistols)
                     .ToList();
             }
+            /*
             if ((bool)Revolvers.IsChecked == true && (bool)All_Guns.IsChecked == false)
             {
                 totalGuns = totalGuns.Concat(listRevolvers)
@@ -428,7 +877,7 @@ namespace SULFURBuildGenerator
             {
                 totalGuns = listGuns;
             }
-
+*/
             // Gun Randomizer
             System.Random randomGunInt = new System.Random();
             int randomGunNumber = randomGunInt.Next(0, totalGuns.Count);
@@ -452,7 +901,6 @@ namespace SULFURBuildGenerator
                 weapon.Projectiles = chamber.Projectiles;
             }
 
-
             File.WriteAllText(@".\JSON\Weapons\!WeaponOriginal.json", JsonConvert.SerializeObject(weapon));
 
             string weaponOrigJsonFilename = @".\JSON\Weapons\!WeaponOriginal.json";
@@ -462,6 +910,40 @@ namespace SULFURBuildGenerator
             ////// Calc original damage for good measure
             weaponOriginal.TotalDamage = weaponOriginal.Damage * weaponOriginal.Projectiles;
 
+            if (weaponOriginal.AmmoType == "Energy")
+            {
+                weaponOriginal.RecoilBase = 0.0;
+            }
+            if (weaponOriginal.AmmoType == "9mm")
+            {
+                weaponOriginal.RecoilBase = weaponOriginal.RecoilBase9mm;
+            }
+            if (weaponOriginal.AmmoType == "7.62mm")
+            {
+                weaponOriginal.RecoilBase = weaponOriginal.RecoilBase762;
+            }
+            if (weaponOriginal.AmmoType == "5.56mm")
+            {
+                weaponOriginal.RecoilBase = weaponOriginal.RecoilBase556;
+            }
+            if (weaponOriginal.AmmoType == ".50 BMG")
+            {
+                weaponOriginal.RecoilBase = weaponOriginal.RecoilBase50bmg;
+            }
+            if (weaponOriginal.AmmoType == "12Ga")
+            {
+                weaponOriginal.RecoilBase = weaponOriginal.RecoilBase12ga;
+            }
+
+            // Create Dictionary for attachments
+
+            Dictionary<string, string> attachmentStorage =
+            new Dictionary<string, string>();
+
+            attachmentStorage.Add("Barrel", "None");
+            attachmentStorage.Add("Optic", "None");
+            attachmentStorage.Add("Laser", "None");
+            attachmentStorage.Add("Firemode", "None");
 
 
             // Attachment Randomizer
@@ -476,18 +958,28 @@ namespace SULFURBuildGenerator
                 }
                 else
                 {
-                    this.build_box.Items[1] = (new MyItem { Item = "Barrel", Selection = listBarrels[randomBarrelNumber] });
+                    var randomBarrel = listBarrels[randomBarrelNumber];
+                    attachmentStorage.Remove("Barrel");
+                    attachmentStorage.Add("Barrel", randomBarrel);
+                    this.build_box.Items[1] = (new MyItem { Item = "Barrel", Selection = randomBarrel });
+
                 }
 
                 // Optic Randomizer
                 System.Random randomOpticInt = new System.Random();
                 int randomOpticNumber = randomOpticInt.Next(0, listOptics.Count);
-                this.build_box.Items[2] = (new MyItem { Item = "Optic", Selection = listOptics[randomOpticNumber] });
+                var randomOptic = listOptics[randomOpticNumber];
+                attachmentStorage.Remove("Optic");
+                attachmentStorage.Add("Optic", randomOptic);
+                this.build_box.Items[2] = (new MyItem { Item = "Optic", Selection = randomOptic });
 
                 // Laser Randomizer
                 System.Random randomLaserInt = new System.Random();
                 int randomLaserNumber = randomLaserInt.Next(0, listLaser.Count);
-                this.build_box.Items[3] = (new MyItem { Item = "Laser", Selection = listLaser[randomLaserNumber] });
+                var randomLaser = listLaser[randomLaserNumber];
+                attachmentStorage.Remove("Laser");
+                attachmentStorage.Add("Laser", randomLaser);
+                this.build_box.Items[3] = (new MyItem { Item = "Laser", Selection = randomLaser });
 
                 // Firemode Randomizer
 
@@ -501,19 +993,28 @@ namespace SULFURBuildGenerator
                     {
                         System.Random randomFireCrankInt = new System.Random();
                         int randomFireCrankNumber = randomFireCrankInt.Next(0, listFiremodeCrank.Count);
-                        this.build_box.Items[4] = (new MyItem { Item = "Firemode", Selection = listFiremodeCrank[randomFireCrankNumber] });
+                        var randomFire = listFiremodeCrank[randomFireCrankNumber];
+                        attachmentStorage.Remove("Firemode");
+                        attachmentStorage.Add("Firemode", randomFire);
+                        this.build_box.Items[4] = (new MyItem { Item = "Firemode", Selection = randomFire });
                     }
                     else if (randomGun == "Flock 76" || randomGun == "Drifter 9" || randomGun == "Vrede" || randomGun == "Ploika Compact" || randomGun == "Ferryman" || randomGun == "Valet" || randomGun == "Corpsemaker" || randomGun == "Type 80 Typhoon" || randomGun == "M11A2 Fisk" || randomGun == "Wingman" || randomGun == "Rektor 100rd" || randomGun == "Duhar" || randomGun == "Neuraxis F22")
                     {
                         System.Random randomFirePrimeInt = new System.Random();
                         int randomFirePrimeNumber = randomFirePrimeInt.Next(0, listFiremodePrime.Count);
-                        this.build_box.Items[4] = (new MyItem { Item = "Firemode", Selection = listFiremodePrime[randomFirePrimeNumber] });
+                        var randomFire = listFiremodePrime[randomFirePrimeNumber];
+                        attachmentStorage.Remove("Firemode");
+                        attachmentStorage.Add("Firemode", randomFire);
+                        this.build_box.Items[4] = (new MyItem { Item = "Firemode", Selection = randomFire });
                     }
                     else
                     {
                         System.Random randomFireInt = new System.Random();
                         int randomFireNumber = randomFireInt.Next(0, listFiremode.Count);
-                        this.build_box.Items[4] = (new MyItem { Item = "Firemode", Selection = listFiremode[randomFireNumber] });
+                        var randomFire = listFiremode[randomFireNumber];
+                        attachmentStorage.Remove("Firemode");
+                        attachmentStorage.Add("Firemode", randomFire);
+                        this.build_box.Items[4] = (new MyItem { Item = "Firemode", Selection = randomFire });
                     }
                 }
                 // Rechamber Randomizer
@@ -552,19 +1053,28 @@ namespace SULFURBuildGenerator
             {
                 System.Random randomBarrelInt = new System.Random();
                 int randomBarrelNumber = randomBarrelInt.Next(0, listBarrels.Count);
-                this.build_box.Items[1] = (new MyItem { Item = "Barrel", Selection = listBarrels[randomBarrelNumber] });
+                var randomBarrel = listBarrels[randomBarrelNumber];
+                attachmentStorage.Remove("Barrel");
+                attachmentStorage.Add("Barrel", randomBarrel);
+                this.build_box.Items[1] = (new MyItem { Item = "Barrel", Selection = randomBarrel });
             }
             if ((bool)optics.IsChecked == true && (bool)allAttachmentsCheckbox.IsChecked == false)
             {
                 System.Random randomOpticInt = new System.Random();
                 int randomOpticNumber = randomOpticInt.Next(0, listOptics.Count);
-                this.build_box.Items[2] = (new MyItem { Item = "Optic", Selection = listOptics[randomOpticNumber] });
+                var randomOptic = listOptics[randomOpticNumber];
+                attachmentStorage.Remove("Optic");
+                attachmentStorage.Add("Optic", randomOptic);
+                this.build_box.Items[2] = (new MyItem { Item = "Optic", Selection = randomOptic });
             }
             if ((bool)Laser.IsChecked == true && (bool)allAttachmentsCheckbox.IsChecked == false)
             {
                 System.Random randomLaserInt = new System.Random();
                 int randomLaserNumber = randomLaserInt.Next(0, listLaser.Count);
-                this.build_box.Items[3] = (new MyItem { Item = "Laser", Selection = listLaser[randomLaserNumber] });
+                var randomLaser = listLaser[randomLaserNumber];
+                attachmentStorage.Remove("Laser");
+                attachmentStorage.Add("Laser", randomLaser);
+                this.build_box.Items[3] = (new MyItem { Item = "Laser", Selection = randomLaser });
             }
             if ((bool)FiringMode.IsChecked == true && (bool)allAttachmentsCheckbox.IsChecked == false)
             {
@@ -578,19 +1088,28 @@ namespace SULFURBuildGenerator
                     {
                         System.Random randomFireCrankInt = new System.Random();
                         int randomFireCrankNumber = randomFireCrankInt.Next(0, listFiremodeCrank.Count);
-                        this.build_box.Items[4] = (new MyItem { Item = "Firemode", Selection = listFiremodeCrank[randomFireCrankNumber] });
+                        var randomFire = listFiremodeCrank[randomFireCrankNumber];
+                        attachmentStorage.Remove("Firemode");
+                        attachmentStorage.Add("Firemode", randomFire);
+                        this.build_box.Items[4] = (new MyItem { Item = "Firemode", Selection = randomFire });
                     }
                     else if (randomGun == "Flock 76" || randomGun == "Drifter 9" || randomGun == "Vrede" || randomGun == "Ploika Compact" || randomGun == "Ferryman" || randomGun == "Valet" || randomGun == "Corpsemaker" || randomGun == "Type 80 Typhoon" || randomGun == "M11A2 Fisk" || randomGun == "Wingman" || randomGun == "Rektor 100rd" || randomGun == "Duhar" || randomGun == "Neuraxis F22")
                     {
                         System.Random randomFirePrimeInt = new System.Random();
                         int randomFirePrimeNumber = randomFirePrimeInt.Next(0, listFiremodePrime.Count);
-                        this.build_box.Items[4] = (new MyItem { Item = "Firemode", Selection = listFiremodePrime[randomFirePrimeNumber] });
+                        var randomFire = listFiremodePrime[randomFirePrimeNumber];
+                        attachmentStorage.Remove("Firemode");
+                        attachmentStorage.Add("Firemode", randomFire);
+                        this.build_box.Items[4] = (new MyItem { Item = "Firemode", Selection = randomFire });
                     }
                     else
                     {
                         System.Random randomFireInt = new System.Random();
                         int randomFireNumber = randomFireInt.Next(0, listFiremode.Count);
-                        this.build_box.Items[4] = (new MyItem { Item = "Firemode", Selection = listFiremode[randomFireNumber] });
+                        var randomFire = listFiremode[randomFireNumber];
+                        attachmentStorage.Remove("Firemode");
+                        attachmentStorage.Add("Firemode", randomFire);
+                        this.build_box.Items[4] = (new MyItem { Item = "Firemode", Selection = randomFire });
                     }
                 }
             }
@@ -642,10 +1161,12 @@ namespace SULFURBuildGenerator
             oilStorage.Add("3", oilShuffle[3].ToString());
             oilStorage.Add("4", oilShuffle[4].ToString());
 
-            if (enchantment_slider.Value > 0)
-            {
-                var oilCount = enchantment_slider.Value;
-                if (no_scrolls_button.IsChecked == true)
+            var vmResult = (ViewModel)DataContext;
+            var selectedScrollPreTrim = vmResult.SelectedScroll.Name;
+            var selectedScroll = selectedScrollPreTrim.TrimStart();
+
+            var oilCount = 5;
+                if (selectedScroll == "None")
                 {
                     oilCount += 1;
                     // First Round
@@ -706,7 +1227,7 @@ namespace SULFURBuildGenerator
                     }
 
                 }
-                if (all_scrolls_button.IsChecked == true)
+                if (selectedScroll == "Random - All")
                 {
                     System.Random randomAllScrollInt = new System.Random();
                     int randomAllScrollNumber = randomAllScrollInt.Next(0, listAllScrolls.Count);
@@ -763,7 +1284,7 @@ namespace SULFURBuildGenerator
                     }
                 }
                 // Tier 1 Scrolls Selection
-                if (t1_scrolls_button.IsChecked == true)
+                if (selectedScroll == "Random - Tier 1")
                 {
                     System.Random randomT1ScrollInt = new System.Random();
                     int randomT1ScrollNumber = randomT1ScrollInt.Next(0, listT1Scrolls.Count);
@@ -820,7 +1341,7 @@ namespace SULFURBuildGenerator
                     }
                 }
                 // Tier 2 Scrolls Selection
-                if (t2_scrolls_button.IsChecked == true)
+                if (selectedScroll == "Random - Tier 2")
                 {
                     System.Random randomT2ScrollInt = new System.Random();
                     int randomT2ScrollNumber = randomT2ScrollInt.Next(0, listAllScrolls.Count);
@@ -877,10 +1398,10 @@ namespace SULFURBuildGenerator
                     }
                 }
                 // Manual Scroll Selection
-                if (choose_scrolls_button.IsChecked == true)
+                if (selectedScroll != "None" || scroll_dropdown.Text == "Random - Tier 2" || scroll_dropdown.Text == "Random - Tier 1" || scroll_dropdown.Text == "None")
                 {
-                    var rawScrollSelect = scroll_dropdown.Text;
-                    this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = rawScrollSelect });
+                    var rawScrollSelect = selectedScroll;
+                    this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = rawScrollSelect.ToString() });
                     oilStorage.Remove("0");
                     // First Round
                     if (oilCount > 1)
@@ -933,15 +1454,15 @@ namespace SULFURBuildGenerator
                     }
                 }
 
-            }
-            if (enchantment_slider.Value == 0)
+            
+            /*if (enchantment_slider.Value == 0)
             {
                 oilStorage.Remove("0");
                 oilStorage.Remove("1");
                 oilStorage.Remove("2");
                 oilStorage.Remove("3");
                 oilStorage.Remove("4");
-            }
+            }*/
 
             // Equipment Randomizer
             if (allEquipmentCheckbox.IsChecked == true)
@@ -986,7 +1507,7 @@ namespace SULFURBuildGenerator
                 int randomTrinket4Number = randomTrinket4Int.Next(0, listTrinkets.Count);
                 this.build_box.Items[18] = (new MyItem { Item = "Trinket 4", Selection = listTrinkets[randomTrinket4Number] });
             }
-            if (headEquipmentCheckbox.IsChecked == true && (bool)allEquipmentCheckbox.IsChecked == false)
+            /*if (headEquipmentCheckbox.IsChecked == true && (bool)allEquipmentCheckbox.IsChecked == false)
             {
                 System.Random randomHeadInt = new System.Random();
                 int randomHeadNumber = randomHeadInt.Next(0, listHeadEquipment.Count);
@@ -1034,10 +1555,48 @@ namespace SULFURBuildGenerator
                 System.Random randomTrinket4Int = new System.Random();
                 int randomTrinket4Number = randomTrinket4Int.Next(0, listTrinkets.Count);
                 this.build_box.Items[18] = (new MyItem { Item = "Trinket 4", Selection = listTrinkets[randomTrinket4Number] });
+            }*/
+
+
+            // Attachment math
+            string attachmentJsonFilename = $".\\JSON\\Attachments\\!AttachmentStats.json";
+            string attachmentJsonString = File.ReadAllText(attachmentJsonFilename);
+            Attachment attachmentStats = JsonConvert.DeserializeObject<Attachment>(attachmentJsonString)!;
+
+            //// Barrels
+            if (attachmentStorage["Barrel"] != "None")
+            {
+                string barrelJsonFilename = $".\\JSON\\Attachments\\Barrels\\{attachmentStorage["Barrel"]}.json";
+                string barrelJsonString = File.ReadAllText(barrelJsonFilename);
+                Attachment barrelStats = JsonConvert.DeserializeObject<Attachment>(barrelJsonString)!;
+                attachmentStats.SpreadAdd += barrelStats.SpreadAdd;
+                attachmentStats.MovementSpeedMult += barrelStats.MovementSpeedMult;
             }
 
+            if (attachmentStorage["Optic"] != "None")
+            {
+                string opticJsonFilename = $".\\JSON\\Attachments\\Optics\\{attachmentStorage["Optic"]}.json";
+                string opticJsonString = File.ReadAllText(opticJsonFilename);
+                Attachment opticStats = JsonConvert.DeserializeObject<Attachment>(opticJsonString)!;
+                attachmentStats.ADSCritChance += opticStats.ADSCritChance;
+            }
 
+            if (attachmentStorage["Laser"] != "None")
+            {
+                string laserJsonFilename = $".\\JSON\\Attachments\\Lasers\\{attachmentStorage["Laser"]}.json";
+                string laserJsonString = File.ReadAllText(laserJsonFilename);
+                Attachment laserStats = JsonConvert.DeserializeObject<Attachment>(laserJsonString)!;
+                attachmentStats.MovingAccuracy += laserStats.MovingAccuracy;
+            }
 
+            if (attachmentStorage["Firemode"] != "None")
+            {
+                string fireJsonFilename = $".\\JSON\\Attachments\\Firemodes\\{attachmentStorage["Firemode"]}.json";
+                string fireJsonString = File.ReadAllText(fireJsonFilename);
+                Attachment fireStats = JsonConvert.DeserializeObject<Attachment>(fireJsonString)!;
+                attachmentStats.DamageMult += fireStats.DamageMult;
+                attachmentStats.SpreadAdd += fireStats.SpreadAdd;
+            }
 
 
             // Oil Math
@@ -1051,9 +1610,9 @@ namespace SULFURBuildGenerator
                 string oilJsonString = File.ReadAllText(oilJsonFilename);
                 Oil oilStats = JsonConvert.DeserializeObject<Oil>(oilJsonString)!;
 
-                if (oilStats.BulletConsumeChance != 0.0)
+                if (oilStats.AmmoConsumeChance != 0.0)
                 {
-                    oilModifierStats.BulletConsumeChance += oilStats.BulletConsumeChance;
+                    oilModifierStats.AmmoConsumeChance += oilStats.AmmoConsumeChance;
                 }
                 if (oilStats.Bounces != 0)
                 {
@@ -1151,6 +1710,15 @@ namespace SULFURBuildGenerator
                 {
                     oilModifierStats.DurabilityUsage += oilStats.DurabilityUsage;
                 }
+                if (oilStats.BulletBounciness != 0.0)
+                {
+                    oilModifierStats.BulletBounciness += oilStats.BulletBounciness;
+                }
+                if (oilStats.MovingAccuracy != 0.0)
+                {
+                    oilModifierStats.MovingAccuracy += oilStats.MovingAccuracy;
+                }
+
             }
 
             // Oils to Weapon calculations & card additions
@@ -1159,6 +1727,7 @@ namespace SULFURBuildGenerator
             this.cardDamageTotal.Inlines.Clear();
             this.cardSpread.Inlines.Clear();
             this.cardBaseCritChance.Inlines.Clear();
+            this.cardTotalCritChance.Inlines.Clear();
             this.cardBounces.Inlines.Clear();
             this.cardReloadSpeed.Inlines.Clear();
             this.cardBulletSpeed.Inlines.Clear();
@@ -1176,7 +1745,7 @@ namespace SULFURBuildGenerator
             this.cardWeaponWeight.Inlines.Clear();
             this.cardMovementSpeedModifier.Inlines.Clear();
             this.cardFinalMovementSpeed.Inlines.Clear();
-            this.cardBulletConsumeChance.Inlines.Clear();
+            this.cardAmmoConsumeChance.Inlines.Clear();
             this.cardExtraAmmoUseChance.Inlines.Clear();
             this.cardBulletDrop.Inlines.Clear();
             this.cardJumpPower.Inlines.Clear();
@@ -1231,33 +1800,32 @@ namespace SULFURBuildGenerator
             }
 
             ///////////////////////////////
-            //// Bullet Consume Chance ////
+            //// Ammo Consume Chance ////
             ///////////////////////////////
 
-            weapon.BulletConsumeChance += oilModifierStats.BulletConsumeChance;
-            weapon.BulletConsumeChance *= 100;
-            this.cardDebug2.Inlines.Add(weapon.BulletConsumeChance.ToString("#####0.#"));
+            weapon.AmmoConsumeChance += oilModifierStats.AmmoConsumeChance;
+            weapon.AmmoConsumeChance *= 100;
 
-            if (weapon.BulletConsumeChance < 100)
+            if (weapon.AmmoConsumeChance < 100)
             {
-                Run runBulletConsumeChance = new Run($"{weapon.BulletConsumeChance.ToString("#####0.#")}%");
-                runBulletConsumeChance.Foreground = Brushes.Lime;
+                Run runAmmoConsumeChance = new Run($"{weapon.AmmoConsumeChance.ToString("#####0.#")}%");
+                runAmmoConsumeChance.Foreground = Brushes.Lime;
 
                 Run runArrowDown = new Run("🡇");
                 runArrowDown.Foreground = Brushes.Lime;
 
-                Run runNoBulletConsumeChance = new Run("(100%)");
-                runNoBulletConsumeChance.FontFamily = new FontFamily("Fredoka Light");
+                Run runNoAmmoConsumeChance = new Run("(100%)");
+                runNoAmmoConsumeChance.FontFamily = new FontFamily("Fredoka Light");
 
-                this.cardBulletConsumeChance.Inlines.Add("Bullet Consume Chance: ");
-                this.cardBulletConsumeChance.Inlines.Add(runBulletConsumeChance);
-                this.cardBulletConsumeChance.Inlines.Add(runArrowDown);
-                this.cardBulletConsumeChance.Inlines.Add(runSpace);
-                this.cardBulletConsumeChance.Inlines.Add(runNoBulletConsumeChance);
+                this.cardAmmoConsumeChance.Inlines.Add("Ammo Consume Chance: ");
+                this.cardAmmoConsumeChance.Inlines.Add(runAmmoConsumeChance);
+                this.cardAmmoConsumeChance.Inlines.Add(runArrowDown);
+                this.cardAmmoConsumeChance.Inlines.Add(runSpace);
+                this.cardAmmoConsumeChance.Inlines.Add(runNoAmmoConsumeChance);
             }
-            if (weapon.BulletConsumeChance == 100)
+            if (weapon.AmmoConsumeChance == 100)
             {
-                this.cardBulletConsumeChance.Inlines.Add("Bullet Consume Chance: 100%");
+                this.cardAmmoConsumeChance.Inlines.Add("Ammo Consume Chance: 100%");
             }
 
             ///////////////////////////////
@@ -1419,6 +1987,62 @@ namespace SULFURBuildGenerator
                 this.cardBaseCritChance.Inlines.Add("Base Crit Chance: 0%");
             }
 
+            /////////////////////////
+            //// ADS Crit Chance ////
+            /////////////////////////
+
+            weapon.ADSCritChance += (attachmentStats.ADSCritChance * 100);
+
+            if (weapon.ADSCritChance > 0.0)
+            {
+                Run runACrit = new Run($"{weapon.ADSCritChance.ToString("#####0.#")}%");
+                runACrit.Foreground = Brushes.Lime;
+
+                Run runArrowUp1 = new Run("🡅");
+                runArrowUp1.Foreground = Brushes.Lime;
+
+                Run runNoACrit = new Run("(0%)");
+                runNoACrit.FontFamily = new FontFamily("Fredoka Light");
+
+                this.cardADSCritChance.Inlines.Add("ADS Crit Chance: ");
+                this.cardADSCritChance.Inlines.Add(runACrit);
+                this.cardADSCritChance.Inlines.Add(runArrowUp1);
+                this.cardADSCritChance.Inlines.Add(runSpace);
+                this.cardADSCritChance.Inlines.Add(runNoACrit);
+            }
+            else
+            {
+                this.cardADSCritChance.Inlines.Add("ADS Crit Chance: 0%");
+            }
+
+            ///////////////////////////
+            //// Total Crit Chance ////
+            ///////////////////////////
+
+            weapon.TotalCritChance = weapon.ADSCritChance + weapon.BaseCritChance;
+
+            if (weapon.TotalCritChance > 0.0)
+            {
+                Run runTCrit = new Run($"{weapon.TotalCritChance.ToString("#####0.#")}%");
+                runTCrit.Foreground = Brushes.Lime;
+
+                Run runArrowUp1 = new Run("🡅");
+                runArrowUp1.Foreground = Brushes.Lime;
+
+                Run runNoTCrit = new Run("(0%)");
+                runNoTCrit.FontFamily = new FontFamily("Fredoka Light");
+
+                this.cardTotalCritChance.Inlines.Add("Total: ");
+                this.cardTotalCritChance.Inlines.Add(runTCrit);
+                this.cardTotalCritChance.Inlines.Add(runArrowUp1);
+                this.cardTotalCritChance.Inlines.Add(runSpace);
+                this.cardTotalCritChance.Inlines.Add(runNoTCrit);
+            }
+            else
+            {
+                this.cardTotalCritChance.Inlines.Add("Total: 0%");
+            }
+
             //////////////////////////////
             //// Damage & Projectiles ////
             //////////////////////////////
@@ -1428,7 +2052,7 @@ namespace SULFURBuildGenerator
             //// Damage Add
             weapon.Damage += oilModifierStats.DamageAdd;
             //// Damage Multiplier
-            weapon.Damage *= (1 + oilModifierStats.DamageMult);
+            weapon.Damage *= (1 + oilModifierStats.DamageMult + attachmentStats.DamageMult);
             //// Total Damage Calc
             weapon.TotalDamage = weapon.Damage * weapon.Projectiles;
 
@@ -1750,7 +2374,7 @@ namespace SULFURBuildGenerator
                 Run runArrowDown = new Run("🡇");
                 runArrowDown.Foreground = Brushes.OrangeRed;
 
-                Run runNoLoot = new Run($"({weaponOriginal.LootDropChance.ToString("#####0.#")})%");
+                Run runNoLoot = new Run($"({weaponOriginal.LootDropChance.ToString("#####0.#")}%)");
                 runNoLoot.FontFamily = new FontFamily("Fredoka Light");
 
                 this.cardLootDropChance.Inlines.Add("Loot Drop Chance: ");
@@ -1814,6 +2438,8 @@ namespace SULFURBuildGenerator
             //// Movement Speed  ////
             /////////////////////////
 
+            this.cardWeaponWeight.Inlines.Add($"Weapon Weight: {weapon.WeaponWeight.ToString("#####0.#")}");
+
             double weaponWeightAdjustment = (double)0.0;
             double s = weapon.MovementSpeedModifier;
             //// Duplicate calculation for original comparison
@@ -1829,23 +2455,17 @@ namespace SULFURBuildGenerator
             this.cardFinalMovementSpeed.Inlines.Clear();
             if (weapon.FinalMovementSpeed < resultMovementSpeedComp)
             {
-                Run runMovementFinal = new Run(weapon.FinalMovementSpeed.ToString());
+                Run runMovementFinal = new Run($"{weapon.FinalMovementSpeed.ToString("#####0.#")}%");
                 runMovementFinal.Foreground = Brushes.OrangeRed;
-                Run runMovementComp = new Run(resultMovementSpeedComp.ToString());
-                runMovementComp.Foreground = Brushes.White;
+
+                Run runMovementComp = new Run($"{resultMovementSpeedComp.ToString("#####0.#")}%");
+                runMovementComp.FontFamily = new FontFamily("Fredoka Light");
 
                 Run runArrowDown1 = new Run("🡇");
                 runArrowDown1.Foreground = Brushes.OrangeRed;
-                Run runArrowDown2 = new Run("🡇");
-                runArrowDown2.Foreground = Brushes.OrangeRed;
 
-                Run runArrowUp1 = new Run("🡅");
-                runArrowUp1.Foreground = Brushes.Lime;
-                Run runArrowUp2 = new Run("🡅");
-                runArrowUp1.Foreground = Brushes.Lime;
-
-
-                this.cardFinalMovementSpeed.Inlines.Add($"Final Movement Speed: {runMovementFinal}%");
+                this.cardFinalMovementSpeed.Inlines.Add($"Final Movement Speed: ");
+                this.cardFinalMovementSpeed.Inlines.Add(runMovementFinal);
                 this.cardFinalMovementSpeed.Inlines.Add(runSpace);
                 this.cardFinalMovementSpeed.Inlines.Add(runArrowDown1);
                 this.cardFinalMovementSpeed.Inlines.Add(runSpace);
@@ -1853,26 +2473,21 @@ namespace SULFURBuildGenerator
             }
             if (weapon.FinalMovementSpeed > resultMovementSpeedComp)
             {
-                Run runMovementFinal = new Run(weapon.FinalMovementSpeed.ToString());
+                Run runMovementFinal = new Run(weapon.FinalMovementSpeed.ToString("#####0.#"));
                 runMovementFinal.Foreground = Brushes.Lime;
-                Run runMovementComp = new Run(resultMovementSpeedComp.ToString());
-                runMovementComp.Foreground = Brushes.White;
 
-                Run runArrowDown1 = new Run("🡇");
-                runArrowDown1.Foreground = Brushes.OrangeRed;
-                Run runArrowDown2 = new Run("🡇");
-                runArrowDown2.Foreground = Brushes.OrangeRed;
+                Run runMovementComp = new Run($"{resultMovementSpeedComp.ToString("#####0.#")}%");
+                runMovementComp.FontFamily = new FontFamily("Fredoka Light");
 
                 Run runArrowUp1 = new Run("🡅");
                 runArrowUp1.Foreground = Brushes.Lime;
-                Run runArrowUp2 = new Run("🡅");
-                runArrowUp1.Foreground = Brushes.Lime;
 
-                this.cardFinalMovementSpeed.Inlines.Add($"Final Movement Speed: {runMovementFinal}%");
+                this.cardFinalMovementSpeed.Inlines.Add($"Final Movement Speed: ");
+                this.cardFinalMovementSpeed.Inlines.Add(runMovementFinal);
                 this.cardFinalMovementSpeed.Inlines.Add(runSpace);
                 this.cardFinalMovementSpeed.Inlines.Add(runArrowUp1);
                 this.cardFinalMovementSpeed.Inlines.Add(runSpace);
-                this.cardFinalMovementSpeed.Inlines.Add($"({runMovementComp}%)");
+                this.cardFinalMovementSpeed.Inlines.Add(runMovementComp);
             }
             else
             {
@@ -1952,11 +2567,77 @@ namespace SULFURBuildGenerator
             //// Recoil ////
             ////////////////
 
+            if (weapon.AmmoType == "Energy")
+            {
+                weapon.RecoilBase = 0.0;
+            }
+            if (weapon.AmmoType == "9mm")
+            {
+                weapon.RecoilBase = weapon.RecoilBase9mm;
+            }
+            if (weapon.AmmoType == "7.62mm")
+            {
+                weapon.RecoilBase = weapon.RecoilBase762;
+            }
+            if (weapon.AmmoType == "5.56mm")
+            {
+                weapon.RecoilBase = weapon.RecoilBase556;
+            }
+            if (weapon.AmmoType == ".50 BMG")
+            {
+                weapon.RecoilBase = weapon.RecoilBase50bmg;
+            }
+            if (weapon.AmmoType == "12Ga")
+            {
+                weapon.RecoilBase = weapon.RecoilBase12ga;
+            }
+
             //// Recoil Add
+
+            weapon.RecoilMult += oilModifierStats.RecoilAdd;
 
             //// Recoil Multiplier
 
+            weapon.RecoilBase *= (weapon.RecoilMult * (1 + oilModifierStats.RecoilMult));
 
+            if (weapon.RecoilBase < weaponOriginal.RecoilBase)
+            {
+                Run runRecoil = new Run($"{weapon.RecoilBase.ToString("#####0.#")}");
+                runRecoil.Foreground = Brushes.Lime;
+
+                Run runArrowDown = new Run("🡇");
+                runArrowDown.Foreground = Brushes.Lime;
+
+                Run runNoRecoil = new Run($"({weaponOriginal.RecoilBase.ToString("#####0.#")})");
+                runNoRecoil.FontFamily = new FontFamily("Fredoka Light");
+
+                this.cardRecoil.Inlines.Add("Recoil: ");
+                this.cardRecoil.Inlines.Add(runRecoil);
+                this.cardRecoil.Inlines.Add(runArrowDown);
+                this.cardRecoil.Inlines.Add(runSpace);
+                this.cardRecoil.Inlines.Add(runNoRecoil);
+            }
+            if (weapon.RecoilBase > weaponOriginal.RecoilBase)
+            {
+                Run runRecoil = new Run($"{weapon.RecoilBase.ToString("#####0.#")}");
+                runRecoil.Foreground = Brushes.OrangeRed;
+
+                Run runArrowUp = new Run("🡅");
+                runArrowUp.Foreground = Brushes.OrangeRed;
+
+                Run runNoRecoil = new Run($"({weaponOriginal.RecoilBase.ToString("#####0.#")})");
+                runNoRecoil.FontFamily = new FontFamily("Fredoka Light");
+
+                this.cardRecoil.Inlines.Add("Recoil: ");
+                this.cardRecoil.Inlines.Add(runRecoil);
+                this.cardRecoil.Inlines.Add(runArrowUp);
+                this.cardRecoil.Inlines.Add(runSpace);
+                this.cardRecoil.Inlines.Add(runNoRecoil);
+            }
+            if (weapon.RecoilBase == weaponOriginal.RecoilBase)
+            {
+                this.cardRecoil.Inlines.Add($"Recoil: {weapon.RecoilBase.ToString()}");
+            }
 
             //////////////////////
             //// Reload Speed ////
@@ -1987,7 +2668,7 @@ namespace SULFURBuildGenerator
                 Run runReload = new Run($"{weapon.ReloadSpeed.ToString("#####0.#")}%");
                 runReload.Foreground = Brushes.Lime;
 
-                Run runArrowUp= new Run("🡅");
+                Run runArrowUp = new Run("🡅");
                 runArrowUp.Foreground = Brushes.Lime;
 
                 Run runNoReload = new Run("(100%)");
@@ -2010,8 +2691,14 @@ namespace SULFURBuildGenerator
 
             //// Spread Add
             weapon.Spread += oilModifierStats.SpreadAdd;
+            weapon.Spread += attachmentStats.SpreadAdd;
             //// Spread Multiplier
             weapon.Spread *= (1 + oilModifierStats.SpreadMult);
+
+            if (weapon.Spread < 0)
+            {
+                weapon.Spread = 0;
+            }
 
             if (weapon.Spread > weaponOriginal.Spread)
             {
@@ -2095,53 +2782,10 @@ namespace SULFURBuildGenerator
             this.cardWeaponName.Text = weapon.Name;
             this.cardWeaponType.Text = $"Type: {weapon.Type}";
             this.cardAmmoType.Text = $"Ammo Type: {weapon.AmmoType}";
-            /*
-            this.cardRPM.Inlines.Clear();
-            this.cardRPM.Inlines.Add ($"RPM: {weapon.RPM}");
-            this.cardMagSize.Text = $"Mag Size: {weapon.MagSize}";
-            this.cardSpread.Text = $"Spread: {weapon.Spread}";
-            this.cardDurability.Text = $"Durability: {weapon.Durability}";
-            this.cardBaseCritChance.Text = $"Base Crit Chance: {weapon.BaseCritChance * 100}%";
-            this.cardADSCritChance.Text = $"ADS Crit Chance: {weapon.ADSCritChance * 100}%";
-            this.cardPenetrations.Text = $"Penetrations: {weapon.Penetrations}";
-            this.cardReloadSpeed.Text = $"Reload Speed: {weapon.ReloadSpeed * 100}%";
-            this.cardRecoil.Text = $"Recoil: idfk";
-            this.cardCanADS.Text = $"Can ADS: {weapon.CanADS}";
-            this.cardMoneyDrops.Text = $"Money Drops: {weapon.MoneyDrops}";
-            this.cardOrganDrops.Text = $"Organ Drops: {weapon.OrganDrops}";
-            this.cardLootDropChance.Text = $"Loot Drop Chance: {weapon.LootDropChance * 100}%";
-            this.cardWeaponWeight.Text = $"Weapon Weight: {weapon.WeaponWeight}";
-            this.cardMovementSpeedModifier.Text = $"Movement Speed Modifier: {weapon.MovementSpeedModifier * 100}%";
-            this.cardBulletConsumeChance.Text = $"Bullet Consume Chance: {weapon.BulletConsumeChance * 100}%";
-            this.cardExtraAmmoUseChance.Text = $"Extra Ammo Use Chance: {weapon.ExtraAmmoUseChance * 100}%";
-            this.cardBulletDrop.Text = $"Bullet Drop: {weapon.BulletDrop}";
-            this.cardJumpPower.Text = $"Jump Power: {weapon.JumpPower * 100}%";
-            this.cardDrag.Text = $"Drag: {weapon.Drag}";
-            this.cardDurabilityUsage.Text = $"Durability Usage: {weapon.DurabilityUsage}";*/
-        }
 
-        private void choose_scrolls_button_Checked(object sender, RoutedEventArgs e)
-        {
-            this.scroll_dropdown.IsEnabled = true;
+            // Add image to card
+            this.cardWeaponImage.Source = new BitmapImage(new Uri($".\\Images\\Guns\\Pistols\\{weapon.Name}.png", UriKind.Relative));
         }
-
-        private void choose_scrolls_button_Unchecked(object sender, RoutedEventArgs e)
-        {
-            this.scroll_dropdown.IsEnabled = false;
-        }
-        private List<MyItem> listMyItem = new List<MyItem>();
-            private void build_box_SelectionChanged(object sender, SelectionChangedEventArgs e)
-            {
-                foreach (MyItem item in e.RemovedItems)
-                {
-                    listMyItem.Remove(item);
-                }
-
-                foreach (MyItem item in e.AddedItems)
-                {
-                    listMyItem.Add(item);
-                }
-            }
     }
 
     internal class MyItem

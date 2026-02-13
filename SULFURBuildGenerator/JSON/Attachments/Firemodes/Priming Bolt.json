@@ -1,0 +1,6 @@
+{
+  "Name": "Priming Bolt",
+  "Type": "Firemode",
+  "DamageMult": "0.1",
+  "SpreadAdd": "-0.1"
+}

@@ -4,7 +4,7 @@
   "TypePositive2": "None",
   "TypeNegative1": "None",
   "TypeNegative2": "None",
-  "BulletConsumeChance": "0.0",
+  "AmmoConsumeChance": "0.0",
   "Bounces": "0.0",
   "BulletDrop": "0.0",
   "BulletSpeed": "0.8",

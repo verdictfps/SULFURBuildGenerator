@@ -108,8 +108,8 @@ namespace SULFURBuildGenerator
         // Movement speed should technically start at 100%, but should be modified by weapon weight - maybe mark armor movement speed change in parentheses?
         public double FinalMovementSpeed { get; set; }
 
-        // Bullet Consume Chance should start at 100% and cap at 0%
-        public double BulletConsumeChance { get; set; }
+        // Ammo Consume Chance should start at 100% and cap at 0%
+        public double AmmoConsumeChance { get; set; }
 
         // Extra Ammo Use chance should start at 0% and cap at 100%
         public double ExtraAmmoUseChance { get; set; }
@@ -127,6 +127,8 @@ namespace SULFURBuildGenerator
         public double DurabilityUsage { get; set; }
 
         public double TotalDamage { get; set; }
+
+        public double TotalCritChance { get; set; }
     }
 
 }
