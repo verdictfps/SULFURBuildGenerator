@@ -19,36 +19,15 @@ namespace SULFURBuildGenerator
     public class OilItem
     {
         public string Name { get; set; }
-        public override bool Equals(object obj)
-        {
-            // Check if the other object is an OilItem and compare the Name
-            if (obj is OilItem other)
-            {
-                return this.Name == other.Name;
-            }
-            return false;
-        }
 
-        public override int GetHashCode()
-        {
-            // Must override GetHashCode if you override Equals
-            return Name?.GetHashCode() ?? 0;
-        }
     }
 
     public class ViewModel : INotifyPropertyChanged
     {
-        public ViewModel()
-        {
-            InitSourceCollection();
-        }
 
-        List<string> listComboBoxOils = new List<string> {
-    "None",
+
+        List<string> listComboBoxOils = new List<string> { "None",
     "Random - All",
-    "Random - Combos",
-    "     Boulder Oil",
-    "     Hyper Lead Oil",
     "Random - Ammo Consume Chance",
     "     Bulk Oil",
     "     Carefree Oil",
@@ -137,6 +116,7 @@ namespace SULFURBuildGenerator
     "     Sender Oil",
     "     Solid Oil",
     "Random - % Damage",
+    "     Boulder Oil",
     "     Complicated Oil",
     "     Damage Oil",
     "     Dum Dum Oil",
@@ -146,6 +126,7 @@ namespace SULFURBuildGenerator
     "     Grounded Oil",
     "     Heavy Oil",
     "     Hip Blaster Oil",
+    "     Hyper Lead Oil",
     "     Launcher Oil",
     "     Overclock Oil",
     "     Puncher Oil",
@@ -294,9 +275,11 @@ namespace SULFURBuildGenerator
                 selectedScroll = value;
                 PropertyChanged?.Invoke(this,
                     new PropertyChangedEventArgs(nameof(SelectedScroll)));
+                PropertyChanged?.Invoke(this,
+                    new PropertyChangedEventArgs(nameof(IsOil5Enabled)));
             }
         }
-  
+
 
         public ObservableCollection<OilItem> Oils1 { get; set; }
 
@@ -304,7 +287,7 @@ namespace SULFURBuildGenerator
 
         public ObservableCollection<OilItem> Oils3 { get; set; }
 
-        public ObservableCollection<OilItem> Oils4{ get; set; }
+        public ObservableCollection<OilItem> Oils4 { get; set; }
 
         public ObservableCollection<OilItem> Oils5 { get; set; }
 
@@ -338,16 +321,18 @@ namespace SULFURBuildGenerator
             }
             set
             {
+                _selectedOil1 = value;
                 var pc = PropertyChanged;
                 UpdateList(Oils2, _selectedOil1, value);
                 UpdateList(Oils3, _selectedOil1, value);
                 UpdateList(Oils4, _selectedOil1, value);
-                UpdateList(Oils5, _selectedOil1, value);
+                UpdateList(Oils5, _selectedOil1, value); 
                 if (pc != null)
                 {
                     _selectedOil1 = value;
                     pc(this, new PropertyChangedEventArgs("SelectedOil1"));
                 }
+
             }
         }
 
@@ -360,6 +345,7 @@ namespace SULFURBuildGenerator
             }
             set
             {
+                _selectedOil2 = value;
                 var pc = PropertyChanged;
                 UpdateList(Oils1, _selectedOil2, value);
                 UpdateList(Oils3, _selectedOil2, value);
@@ -383,6 +369,7 @@ namespace SULFURBuildGenerator
             }
             set
             {
+                _selectedOil3 = value;
                 var pc = PropertyChanged;
                 UpdateList(Oils1, _selectedOil3, value);
                 UpdateList(Oils2, _selectedOil3, value);
@@ -406,6 +393,7 @@ namespace SULFURBuildGenerator
             }
             set
             {
+                _selectedOil4 = value;
                 var pc = PropertyChanged;
                 UpdateList(Oils1, _selectedOil4, value);
                 UpdateList(Oils2, _selectedOil4, value);
@@ -429,11 +417,13 @@ namespace SULFURBuildGenerator
             }
             set
             {
+                _selectedOil5 = value;
                 var pc = PropertyChanged;
                 UpdateList(Oils1, _selectedOil5, value);
                 UpdateList(Oils2, _selectedOil5, value);
                 UpdateList(Oils3, _selectedOil5, value);
                 UpdateList(Oils4, _selectedOil5, value);
+
                 if (pc != null)
                 {
                     _selectedOil5 = value;
@@ -442,6 +432,7 @@ namespace SULFURBuildGenerator
             }
 
         }
+
 
         private void UpdateList(ObservableCollection<OilItem> targetList, OilItem oldItem, OilItem newItem)
         {
@@ -467,11 +458,24 @@ namespace SULFURBuildGenerator
                 }
             }
         }
+        public bool IsOil5Enabled =>
+        SelectedScroll != null &&
+        SelectedScroll.Name == "None";
 
-        public List<string> SelectedItems { get; set; } = new List<string>();
+        // public List<string> SelectedItems { get; set; } = new List<string>();
 
+        public ViewModel()
+        {
 
+            InitSourceCollection();
 
+            SelectedOil1 = Oils1.FirstOrDefault();
+            SelectedOil2 = Oils2.FirstOrDefault();
+            SelectedOil3 = Oils3.FirstOrDefault();
+            SelectedOil4 = Oils4.FirstOrDefault();
+            SelectedOil5 = Oils5.FirstOrDefault();
+
+        }
     }
 
 

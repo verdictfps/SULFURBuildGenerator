@@ -40,7 +40,7 @@ namespace SULFURBuildGenerator
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// 
-
+    
     public partial class MainWindow : Window
     {
 
@@ -268,10 +268,7 @@ namespace SULFURBuildGenerator
     "Zero Fucks Oil",
     "Zooming Oil"*/
 };
-        List<string> listOilCombo = new List<string> {
-    "Boulder Oil",
-    "Hyper Lead Oil",
-        };
+        
         List<string> listOilAmmo = new List<string> {
     "Bulk Oil",
     "Carefree Oil",
@@ -360,6 +357,7 @@ namespace SULFURBuildGenerator
     "Sender Oil",
     "Solid Oil",};
         List<string> listOilMultDam = new List<string> {
+    "Boulder Oil",
     "Complicated Oil",
     "Damage Oil",
     "Dum Dum Oil",
@@ -369,12 +367,13 @@ namespace SULFURBuildGenerator
     "Grounded Oil",
     "Heavy Oil",
     "Hip Blaster Oil",
+    "Hyper Lead Oil",
     "Launcher Oil",
     "Overclock Oil",
     "Puncher Oil",
     "Slow Punch Oil",
     "Spartan Oil",
-    "Terminator Oil",};
+    "Terminator Oil", };
         List<string> listOilDur = new List<string> {
     "Dense Oil",
     "Detune Oil",
@@ -560,7 +559,6 @@ namespace SULFURBuildGenerator
 
 
             InitializeComponent();
-            
             var vm = new ViewModel();
             vm.Scrolls.Add(new ScrollItem
             {
@@ -719,70 +717,73 @@ namespace SULFURBuildGenerator
 
             DataContext = vm;
 
+            comboboxWeapon.SelectedIndex = 0;
 
-                // Creates a bunch of json files for oils. i know, it's fucking insane, but im bad at this
-                /*foreach (string oil in listOils)
+
+            // Creates a bunch of json files for oils. i know, it's fucking insane, but im bad at this
+            /*foreach (string oil in listOils)
+            {
+                string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Oils\\{oil}.json";
+                var settings = new JsonSerializerSettings
                 {
-                    string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Oils\\{oil}.json";
-                    var settings = new JsonSerializerSettings
-                    {
-                        Formatting = Formatting.Indented
-                    };
-                    var data = new { Name = oil, TypePositive1 = "None", TypePositive2 = "None", TypeNegative1 = "None", TypeNegative2 = "None", AmmoConsumeChance = "0.0", Bounces = "0.0", BulletDrop = "0.0", BulletSpeed = "0.0", ExtraAmmoUseChance = "0.0", BaseCritChance = "0.0", DamageAdd = "0.0", DamageMult = "0.0", CanADS = "Yes", JumpPower = "0.0", LootDropChance = "0.0", DurabilityMult = "0.0", MovementSpeedMult = "0.0", MoneyDrops = "Yes", OrganDrops = "Yes", Penetrations = "0.0", ProjectileMult = "0.0", RPM = "0.0", RecoilAdd = "0.0", RecoilMult = "0.0", ReloadSpeed = "0.0", SpreadAdd = "0.0", SpreadMult = "0.0", Drag = "0.0", DurabilityUsage = "1.0" };
-                    string jsonString = JsonConvert.SerializeObject(data, settings);
-                    File.WriteAllText(fileName, jsonString);
-                }
+                    Formatting = Formatting.Indented
+                };
+                var data = new { Name = oil, TypePositive1 = "None", TypePositive2 = "None", TypeNegative1 = "None", TypeNegative2 = "None", AmmoConsumeChance = "0.0", Bounces = "0.0", BulletDrop = "0.0", BulletSpeed = "0.0", ExtraAmmoUseChance = "0.0", BaseCritChance = "0.0", DamageAdd = "0.0", DamageMult = "0.0", CanADS = "Yes", JumpPower = "0.0", LootDropChance = "0.0", DurabilityMult = "0.0", MovementSpeedMult = "0.0", MoneyDrops = "Yes", OrganDrops = "Yes", Penetrations = "0.0", ProjectileMult = "0.0", RPM = "0.0", RecoilAdd = "0.0", RecoilMult = "0.0", ReloadSpeed = "0.0", SpreadAdd = "0.0", SpreadMult = "0.0", Drag = "0.0", DurabilityUsage = "1.0" };
+                string jsonString = JsonConvert.SerializeObject(data, settings);
+                File.WriteAllText(fileName, jsonString);
+            }
 
-                // Attachment json generation
-                foreach (string barrel in listBarrels)
+            // Attachment json generation
+            foreach (string barrel in listBarrels)
+           {
+               string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Attachments\\Barrels\\{barrel}.json";
+               var settings = new JsonSerializerSettings
                {
-                   string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Attachments\\Barrels\\{barrel}.json";
-                   var settings = new JsonSerializerSettings
-                   {
-                       Formatting = Formatting.Indented
-                   };
-                   var data = new { Name = barrel, Type = "Barrel", SpreadAdd = "0.0", MovementSpeedMult = "0.0", };
-                   string jsonString = JsonConvert.SerializeObject(data, settings);
-                   File.WriteAllText(fileName, jsonString);
-               }
+                   Formatting = Formatting.Indented
+               };
+               var data = new { Name = barrel, Type = "Barrel", SpreadAdd = "0.0", MovementSpeedMult = "0.0", };
+               string jsonString = JsonConvert.SerializeObject(data, settings);
+               File.WriteAllText(fileName, jsonString);
+           }
 
-                foreach (string optic in listOptics)
+            foreach (string optic in listOptics)
+           {
+               string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Attachments\\Optics\\{optic}.json";
+               var settings = new JsonSerializerSettings
                {
-                   string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Attachments\\Optics\\{optic}.json";
-                   var settings = new JsonSerializerSettings
-                   {
-                       Formatting = Formatting.Indented
-                   };
-                   var data = new { Name = optic, Type = "Optic", BaseCritChance = "0.0" };
-                   string jsonString = JsonConvert.SerializeObject(data, settings);
-                   File.WriteAllText(fileName, jsonString);
-               }
+                   Formatting = Formatting.Indented
+               };
+               var data = new { Name = optic, Type = "Optic", BaseCritChance = "0.0" };
+               string jsonString = JsonConvert.SerializeObject(data, settings);
+               File.WriteAllText(fileName, jsonString);
+           }
 
-                foreach (string laser in listLaser)
+            foreach (string laser in listLaser)
+         {
+             string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Attachments\\Lasers\\{laser}.json";
+             var settings = new JsonSerializerSettings
              {
-                 string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Attachments\\Lasers\\{laser}.json";
-                 var settings = new JsonSerializerSettings
-                 {
-                     Formatting = Formatting.Indented
-                 };
-                 var data = new { Name = laser, Type = "Laser", MovementAccuracy = "0.0" };
-                 string jsonString = JsonConvert.SerializeObject(data, settings);
-                 File.WriteAllText(fileName, jsonString);
-             }
+                 Formatting = Formatting.Indented
+             };
+             var data = new { Name = laser, Type = "Laser", MovementAccuracy = "0.0" };
+             string jsonString = JsonConvert.SerializeObject(data, settings);
+             File.WriteAllText(fileName, jsonString);
+         }
 
-                foreach (string firemode in listFiremode)
+            foreach (string firemode in listFiremode)
+            {
+                string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Attachments\\Firemodes\\{firemode}.json";
+                var settings = new JsonSerializerSettings
                 {
-                    string fileName = $"C:\\Users\\verdi\\source\\repos\\SULFURBuildGenerator\\SULFURBuildGenerator\\JSON\\Attachments\\Firemodes\\{firemode}.json";
-                    var settings = new JsonSerializerSettings
-                    {
-                        Formatting = Formatting.Indented
-                    };
-                    var data = new { Name = firemode, Type = "Firemode", DamageMult = "0.0", SpreadAdd = "0.0" };
-                    string jsonString = JsonConvert.SerializeObject(data, settings);
-                    File.WriteAllText(fileName, jsonString);
-                }*/
+                    Formatting = Formatting.Indented
+                };
+                var data = new { Name = firemode, Type = "Firemode", DamageMult = "0.0", SpreadAdd = "0.0" };
+                string jsonString = JsonConvert.SerializeObject(data, settings);
+                File.WriteAllText(fileName, jsonString);
+            }*/
 
-                InitializeComponent();
+            InitializeComponent();
+
             this.build_box.Items.Add(new MyItem { Item = "Gun", Selection = "None" });
             this.build_box.Items.Add(new MyItem { Item = "Barrel", Selection = "None" });
             this.build_box.Items.Add(new MyItem { Item = "Optic", Selection = "None" });
@@ -1147,322 +1148,1330 @@ namespace SULFURBuildGenerator
                 }
             }
 
+            // Get Enchantment Selections
+
+            var vmResult = (ViewModel)DataContext;
+            var selectedScroll = vmResult.SelectedScroll.Name;
+
+            var selectedOil1Trim = vmResult.SelectedOil1.Name;
+            var selectedOil1 = selectedOil1Trim.TrimStart();
+
+            var selectedOil2Trim = vmResult.SelectedOil2.Name;
+            var selectedOil2 = selectedOil2Trim.TrimStart();
+
+            var selectedOil3Trim = vmResult.SelectedOil3.Name;
+            var selectedOil3 = selectedOil3Trim.TrimStart();
+
+            var selectedOil4Trim = vmResult.SelectedOil4.Name;
+            var selectedOil4 = selectedOil4Trim.TrimStart();
+
+            string selectedOil5;
+
+            if (oil_dropdown_5.IsEnabled == true)
+            {
+                var selectedOil5Trim = vmResult.SelectedOil5.Name;
+                selectedOil5 = selectedOil5Trim.TrimStart();
+            }
+            else
+            {
+                selectedOil5 = "None";
+            }
+            
+            // Create Scroll Dictionaries
+            Dictionary<string, string> scrollAllStorage =
+            new Dictionary<string, string>();
+
+            Dictionary<string, string> scrollT1Storage =
+            new Dictionary<string, string>();
+
+            Dictionary<string, string> scrollT2Storage =
+            new Dictionary<string, string>();
+
             // Enchantment Randomizer
 
-            var oilShuffle = listOils.OrderBy(_ => Guid.NewGuid()).ToList();
+            //// Scroll List Shuffle
+            switch (selectedScroll)
+            {
+                case "None":
+                    break;
+                case "Random - All":
+                    var scrollShuffle = listAllScrolls.OrderBy(_ => Guid.NewGuid()).ToList();
+                    this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = scrollShuffle[1] });
+                    selectedScroll = scrollShuffle.ToString();
+                    break;
+                case "Random - T1":
+                    var scrollT1Shuffle = listT1Scrolls.OrderBy(_ => Guid.NewGuid()).ToList();
+                    this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = scrollT1Shuffle[1] });
+                    selectedScroll = scrollT1Shuffle.ToString();
+                    break;
+                case "Random - T2":
+                    var scrollT2Shuffle = listT2Scrolls.OrderBy(_ => Guid.NewGuid()).ToList();
+                    this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = scrollT2Shuffle[1] });
+                    selectedScroll = scrollT2Shuffle.ToString();
+                    break;
+                default:
+                    this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = selectedScroll });
+                    break;
+            }
 
+            // Collect oil selections and initialize lists
+            string[] oilSelectionArray = { selectedOil1, selectedOil2, selectedOil3, selectedOil4, selectedOil5 };
 
+            List<string> oilAllShuffle = new List<string>();
+            List<string> oilAmmoShuffle = new List<string>();
+            List<string> oilCritShuffle = new List<string>();
+            List<string> oilBounceShuffle = new List<string>();
+            List<string> oilSpeedShuffle = new List<string>();
+            List<string> oilAddDamShuffle = new List<string>();
+            List<string> oilMultDamShuffle = new List<string>();
+            List<string> oilDurShuffle = new List<string>();
+            List<string> oilPenShuffle = new List<string>();
+            List<string> oilProjShuffle = new List<string>();
+            List<string> oilRecoilShuffle = new List<string>();
+            List<string> oilReloadShuffle = new List<string>();
+            List<string> oilRPMShuffle = new List<string>();
+            List<string> oilSpreadShuffle = new List<string>();
+
+            // Shuffle All Oils
+            string matchAll = "Random - All";
+            if (oilSelectionArray.Any(s => s == matchAll))
+            {
+                oilAllShuffle = listOils.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilAllShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilAllShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle Ammo Consume Chance
+            string matchAmmo = "Random - Ammo Consume Chance";
+            if (oilSelectionArray.Any(s => s == matchAmmo))
+            {
+                oilAmmoShuffle = listOilAmmo.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilAmmoShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilAmmoShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle Base Crit Chance
+            string matchCrit = "Random - Base Crit Chance";
+            if (oilSelectionArray.Any(s => s == matchCrit))
+            {
+                oilCritShuffle = listOilCrit.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilCritShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilCritShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle Bullet Bounces
+            string matchBounce = "Random - Bullet Bounces";
+            if (oilSelectionArray.Any(s => s == matchBounce))
+            {
+                oilBounceShuffle = listOilBounce.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilBounceShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilBounceShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle Bullet Speed
+            string matchSpeed = "Random - Bullet Speed";
+            if (oilSelectionArray.Any(s => s == matchSpeed))
+            {
+                oilSpeedShuffle = listOilSpeed.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilSpeedShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilSpeedShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle Add Damage
+            string matchAddDmg = "Random - Add Damage";
+            if (oilSelectionArray.Any(s => s == matchAddDmg))
+            {
+                oilAddDamShuffle = listOilAddDam.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilAddDamShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilAddDamShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle % Damage
+            string matchMultDmg = "Random - % Damage";
+            if (oilSelectionArray.Any(s => s == matchMultDmg))
+            {
+                oilMultDamShuffle = listOilMultDam.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilMultDamShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilMultDamShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle Durability
+            string matchDur = "Random - Durability";
+            if (oilSelectionArray.Any(s => s == matchDur))
+            {
+                oilDurShuffle = listOilDur.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilDurShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilDurShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle Penetration
+            string matchPen = "Random - Penetration";
+            if (oilSelectionArray.Any(s => s == matchPen))
+            {
+                oilPenShuffle = listOilPen.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilPenShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilPenShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle Projectiles
+            string matchProj = "Random - Projectiles";
+            if (oilSelectionArray.Any(s => s == matchProj))
+            {
+                oilProjShuffle = listOilProj.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilProjShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilProjShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle Recoil
+            string matchRecoil = "Random - Recoil";
+            if (oilSelectionArray.Any(s => s == matchRecoil))
+            {
+                oilRecoilShuffle = listOilRecoil.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilRecoilShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilRecoilShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle Reload Speed
+            string matchReload = "Random - Reload Speed";
+            if (oilSelectionArray.Any(s => s == matchReload))
+            {
+                oilReloadShuffle = listOilReload.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilReloadShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilReloadShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle RPM
+            string matchRPM = "Random - RPM";
+            if (oilSelectionArray.Any(s => s == matchRPM))
+            {
+                oilRPMShuffle = listOilRPM.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilRPMShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilRPMShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Shuffle Spread
+            string matchSpread = "Random - Spread";
+            if (oilSelectionArray.Any(s => s == matchSpread))
+            {
+                oilSpreadShuffle = listOilSpread.OrderBy(_ => Guid.NewGuid()).ToList();
+                foreach (string oil in oilSpreadShuffle.ToList())
+                {
+                    if (oilSelectionArray.Any(s => s == oil))
+                    {
+                        bool wasRemoved = oilSpreadShuffle.Remove(oil);
+                    }
+                }
+            }
+
+            // Oil Dictionary to store random oils
             Dictionary<string, string> oilStorage =
             new Dictionary<string, string>();
 
-            oilStorage.Add("0", oilShuffle[0].ToString());
-            oilStorage.Add("1", oilShuffle[1].ToString());
-            oilStorage.Add("2", oilShuffle[2].ToString());
-            oilStorage.Add("3", oilShuffle[3].ToString());
-            oilStorage.Add("4", oilShuffle[4].ToString());
-
-            var vmResult = (ViewModel)DataContext;
-            var selectedScrollPreTrim = vmResult.SelectedScroll.Name;
-            var selectedScroll = selectedScrollPreTrim.TrimStart();
-
-            var oilCount = 5;
-                if (selectedScroll == "None")
-                {
-                    oilCount += 1;
-                    // First Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilStorage["0"] });
-                        oilCount -= 0;
-                    }
-                    // Second Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilStorage["1"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("1");
-                        oilStorage.Remove("2");
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = "None" });
-                    }
-                    // Third Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilStorage["2"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("2");
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = "None" });
-                    }
-                    // Fourth Round
-                    if (oilCount > 1)
-                    {
-
-                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilStorage["3"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = "None" });
-                    }
-                    // Fifth Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilStorage["4"] });
-                    }
-                    else
-                    {
-                        oilStorage.Remove("4");
-                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = "None" });
-                    }
-
-                }
-                if (selectedScroll == "Random - All")
-                {
-                    System.Random randomAllScrollInt = new System.Random();
-                    int randomAllScrollNumber = randomAllScrollInt.Next(0, listAllScrolls.Count);
-                    this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = listAllScrolls[randomAllScrollNumber] });
-                    oilStorage.Remove("0");
-                    // First Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilStorage["1"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("1");
-                        oilStorage.Remove("2");
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = "None" });
-                    }
-                    // Second Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilStorage["2"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("2");
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = "None" });
-                    }
-                    // Third Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilStorage["3"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = "None" });
-                    }
-                    // Fourth Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilStorage["4"] });
-                    }
-                    else
-                    {
-                        oilStorage.Remove("4");
-                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = "None" });
-                    }
-                }
-                // Tier 1 Scrolls Selection
-                if (selectedScroll == "Random - Tier 1")
-                {
-                    System.Random randomT1ScrollInt = new System.Random();
-                    int randomT1ScrollNumber = randomT1ScrollInt.Next(0, listT1Scrolls.Count);
-                    this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = listT1Scrolls[randomT1ScrollNumber] });
-                    oilStorage.Remove("0");
-                    // First Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilStorage["1"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("1");
-                        oilStorage.Remove("2");
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = "None" });
-                    }
-                    // Second Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilStorage["2"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("2");
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = "None" });
-                    }
-                    // Third Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilStorage["3"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = "None" });
-                    }
-                    // Fourth Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilStorage["4"] });
-                    }
-                    else
-                    {
-                        oilStorage.Remove("4");
-                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = "None" });
-                    }
-                }
-                // Tier 2 Scrolls Selection
-                if (selectedScroll == "Random - Tier 2")
-                {
-                    System.Random randomT2ScrollInt = new System.Random();
-                    int randomT2ScrollNumber = randomT2ScrollInt.Next(0, listAllScrolls.Count);
-                    this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = listT2Scrolls[randomT2ScrollNumber] });
-                    oilStorage.Remove("0");
-                    // First Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilStorage["1"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("1");
-                        oilStorage.Remove("2");
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = "None" });
-                    }
-                    // Second Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilStorage["2"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("2");
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = "None" });
-                    }
-                    // Third Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilStorage["3"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = "None" });
-                    }
-                    // Fourth Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilStorage["4"] });
-                    }
-                    else
-                    {
-                        oilStorage.Remove("4");
-                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = "None" });
-                    }
-                }
-                // Manual Scroll Selection
-                if (selectedScroll != "None" || scroll_dropdown.Text == "Random - Tier 2" || scroll_dropdown.Text == "Random - Tier 1" || scroll_dropdown.Text == "None")
-                {
-                    var rawScrollSelect = selectedScroll;
-                    this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = rawScrollSelect.ToString() });
-                    oilStorage.Remove("0");
-                    // First Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilStorage["1"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("1");
-                        oilStorage.Remove("2");
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = "None" });
-                    }
-                    // Second Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilStorage["2"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("2");
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = "None" });
-                    }
-                    // Third Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilStorage["3"] });
-                        oilCount -= 0;
-                    }
-                    else
-                    {
-                        oilStorage.Remove("3");
-                        oilStorage.Remove("4");
-                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = "None" });
-                    }
-                    // Fourth Round
-                    if (oilCount > 1)
-                    {
-                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilStorage["4"] });
-                    }
-                    else
-                    {
-                        oilStorage.Remove("4");
-                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = "None" });
-                    }
-                }
-
-            
-            /*if (enchantment_slider.Value == 0)
+            // Add Oils to Grid
+            if (selectedScroll == "None")
             {
-                oilStorage.Remove("0");
-                oilStorage.Remove("1");
-                oilStorage.Remove("2");
-                oilStorage.Remove("3");
-                oilStorage.Remove("4");
-            }*/
+                // Add First Oil to Grid
+                switch (selectedOil1)
+                {
+                    case "None":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = selectedOil1.ToString() });
+                        break;
+                    case "Random - All":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilAllShuffle[0] });
+                        oilStorage.Add("0", oilAllShuffle[0].ToString());
+                        break;
+                    case "Random - Ammo Consume Chance":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilAmmoShuffle[0] });
+                        oilStorage.Add("0", oilAmmoShuffle[0].ToString());
+                        break;
+                    case "Random - Base Crit Chance":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilCritShuffle[0] });
+                        oilStorage.Add("0", oilCritShuffle[0].ToString());
+                        break;
+                    case "Random - Bullet Bounces":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilBounceShuffle[0] });
+                        oilStorage.Add("0", oilBounceShuffle[0].ToString());
+                        break;
+                    case "Random - Bullet Speed":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilSpeedShuffle[0] });
+                        oilStorage.Add("0", oilSpeedShuffle[0].ToString());
+                        break;
+                    case "Random - Add Damage":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilAddDamShuffle[0] });
+                        oilStorage.Add("0", oilAddDamShuffle[0].ToString());
+                        break;
+                    case "Random - % Damage":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilMultDamShuffle[0] });
+                        oilStorage.Add("0", oilMultDamShuffle[0].ToString());
+                        break;
+                    case "Random - Durability":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilDurShuffle[0] });
+                        oilStorage.Add("0", oilDurShuffle[0].ToString());
+                        break;
+                    case "Random - Penetration":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilPenShuffle[0] });
+                        oilStorage.Add("0", oilPenShuffle[0].ToString());
+                        break;
+                    case "Random - Projectiles":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilProjShuffle[0] });
+                        oilStorage.Add("0", oilProjShuffle[0].ToString());
+                        break;
+                    case "Random - Recoil":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilRecoilShuffle[0] });
+                        oilStorage.Add("0", oilRecoilShuffle[0].ToString());
+                        break;
+                    case "Random - Reload Speed":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilReloadShuffle[0] });
+                        oilStorage.Add("0", oilReloadShuffle[0].ToString());
+                        break;
+                    case "Random - RPM":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilRPMShuffle[0] });
+                        oilStorage.Add("0", oilRPMShuffle[0].ToString());
+                        break;
+                    case "Random - Spread":
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = oilSpreadShuffle[0] });
+                        oilStorage.Add("0", oilSpreadShuffle[0].ToString());
+                        break;
+                    default:
+                        this.build_box.Items[6] = (new MyItem { Item = "Enchantment 1", Selection = selectedOil1.ToString() });
+                        oilStorage.Add("0", selectedOil1.ToString());
+                        break;
+                }
+                // Remove potential dupes
+                if (oilStorage.ContainsKey("0"))
+                {
+                    if (oilAllShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilAllShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilAmmoShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilAmmoShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilCritShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilCritShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilBounceShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilBounceShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilSpeedShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilSpeedShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilAddDamShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilAddDamShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilMultDamShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilMultDamShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilDurShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilDurShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilPenShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilPenShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilProjShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilProjShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilRecoilShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilRecoilShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilReloadShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilReloadShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilRPMShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilRPMShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilSpreadShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilSpreadShuffle.Remove(oilStorage["0"]);
+                    }
+                }
+
+                // Add Second Oil to Grid
+                switch (selectedOil2)
+                {
+                    case "None":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = selectedOil2.ToString() });
+                        break;
+                    case "Random - All":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilAllShuffle[0] });
+                        oilStorage.Add("1", oilAllShuffle[0].ToString());
+                        break;
+                    case "Random - Ammo Consume Chance":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilAmmoShuffle[0] });
+                        oilStorage.Add("1", oilAmmoShuffle[0].ToString());
+                        break;
+                    case "Random - Base Crit Chance":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilCritShuffle[0] });
+                        oilStorage.Add("1", oilCritShuffle[0].ToString());
+                        break;
+                    case "Random - Bullet Bounces":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilBounceShuffle[0] });
+                        oilStorage.Add("1", oilBounceShuffle[0].ToString());
+                        break;
+                    case "Random - Bullet Speed":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilSpeedShuffle[0] });
+                        oilStorage.Add("1", oilSpeedShuffle[0].ToString());
+                        break;
+                    case "Random - Add Damage":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilAddDamShuffle[0] });
+                        oilStorage.Add("1", oilAddDamShuffle[0].ToString());
+                        break;
+                    case "Random - % Damage":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilMultDamShuffle[0] });
+                        oilStorage.Add("1", oilMultDamShuffle[0].ToString());
+                        break;
+                    case "Random - Durability":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilDurShuffle[0] });
+                        oilStorage.Add("1", oilDurShuffle[0].ToString());
+                        break;
+                    case "Random - Penetration":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilPenShuffle[0] });
+                        oilStorage.Add("1", oilPenShuffle[0].ToString());
+                        break;
+                    case "Random - Projectiles":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilProjShuffle[0] });
+                        oilStorage.Add("1", oilProjShuffle[0].ToString());
+                        break;
+                    case "Random - Recoil":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilRecoilShuffle[0] });
+                        oilStorage.Add("1", oilRecoilShuffle[0].ToString());
+                        break;
+                    case "Random - Reload Speed":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilReloadShuffle[0] });
+                        oilStorage.Add("1", oilReloadShuffle[0].ToString());
+                        break;
+                    case "Random - RPM":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilRPMShuffle[0] });
+                        oilStorage.Add("1", oilRPMShuffle[0].ToString());
+                        break;
+                    case "Random - Spread":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilSpreadShuffle[0] });
+                        oilStorage.Add("1", oilSpreadShuffle[0].ToString());
+                        break;
+                    default:
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = selectedOil2.ToString() });
+                        oilStorage.Add("1", selectedOil2.ToString());
+                        break;
+                }
+                // Remove potential dupes
+                if (oilStorage.ContainsKey("1"))
+                {
+                    if (oilAllShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilAllShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilAmmoShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilAmmoShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilCritShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilCritShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilBounceShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilBounceShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilSpeedShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilSpeedShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilAddDamShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilAddDamShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilMultDamShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilMultDamShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilDurShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilDurShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilPenShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilPenShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilProjShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilProjShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilRecoilShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilRecoilShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilReloadShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilReloadShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilRPMShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilRPMShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilSpreadShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilSpreadShuffle.Remove(oilStorage["1"]);
+                    }
+                }
+
+                // Add Third Oil to Grid
+                switch (selectedOil3)
+                {
+                    case "None":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = selectedOil3.ToString() });
+                        break;
+                    case "Random - All":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilAllShuffle[2] });
+                        oilStorage.Add("2", oilAllShuffle[2].ToString());
+                        break;
+                    case "Random - Ammo Consume Chance":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilAmmoShuffle[2] });
+                        oilStorage.Add("2", oilAmmoShuffle[2].ToString());
+                        break;
+                    case "Random - Base Crit Chance":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilCritShuffle[2] });
+                        oilStorage.Add("2", oilCritShuffle[2].ToString());
+                        break;
+                    case "Random - Bullet Bounces":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilBounceShuffle[2] });
+                        oilStorage.Add("2", oilBounceShuffle[2].ToString());
+                        break;
+                    case "Random - Bullet Speed":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilSpeedShuffle[2] });
+                        oilStorage.Add("2", oilSpeedShuffle[2].ToString());
+                        break;
+                    case "Random - Add Damage":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilAddDamShuffle[2] });
+                        oilStorage.Add("2", oilAddDamShuffle[2].ToString());
+                        break;
+                    case "Random - % Damage":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilMultDamShuffle[2] });
+                        oilStorage.Add("2", oilMultDamShuffle[2].ToString());
+                        break;
+                    case "Random - Durability":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilDurShuffle[2] });
+                        oilStorage.Add("2", oilDurShuffle[2].ToString());
+                        break;
+                    case "Random - Penetration":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilPenShuffle[2] });
+                        oilStorage.Add("2", oilPenShuffle[2].ToString());
+                        break;
+                    case "Random - Projectiles":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilProjShuffle[2] });
+                        oilStorage.Add("2", oilProjShuffle[2].ToString());
+                        break;
+                    case "Random - Recoil":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilRecoilShuffle[2] });
+                        oilStorage.Add("2", oilRecoilShuffle[2].ToString());
+                        break;
+                    case "Random - Reload Speed":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilReloadShuffle[2] });
+                        oilStorage.Add("2", oilReloadShuffle[2].ToString());
+                        break;
+                    case "Random - RPM":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilRPMShuffle[2] });
+                        oilStorage.Add("2", oilRPMShuffle[2].ToString());
+                        break;
+                    case "Random - Spread":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilSpreadShuffle[2] });
+                        oilStorage.Add("2", oilSpreadShuffle[2].ToString());
+                        break;
+                    default:
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = selectedOil3.ToString() });
+                        oilStorage.Add("2", selectedOil3.ToString());
+                        break;
+                }
+                // Remove potential dupes
+                if (oilStorage.ContainsKey("2"))
+                {
+                    if (oilAllShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilAllShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilAmmoShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilAmmoShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilCritShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilCritShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilBounceShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilBounceShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilSpeedShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilSpeedShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilAddDamShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilAddDamShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilMultDamShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilMultDamShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilDurShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilDurShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilPenShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilPenShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilProjShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilProjShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilRecoilShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilRecoilShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilReloadShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilReloadShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilRPMShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilRPMShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilSpreadShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilSpreadShuffle.Remove(oilStorage["2"]);
+                    }
+                }
+
+
+                // Add Fourth Oil to Grid
+                switch (selectedOil4)
+                {
+                    case "None":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = selectedOil4.ToString() });
+                        break;
+                    case "Random - All":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilAllShuffle[3] });
+                        oilStorage.Add("3", oilAllShuffle[3].ToString());
+                        break;
+                    case "Random - Ammo Consume Chance":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilAmmoShuffle[3] });
+                        oilStorage.Add("3", oilAmmoShuffle[3].ToString());
+                        break;
+                    case "Random - Base Crit Chance":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilCritShuffle[3] });
+                        oilStorage.Add("3", oilCritShuffle[3].ToString());
+                        break;
+                    case "Random - Bullet Bounces":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilBounceShuffle[3] });
+                        oilStorage.Add("3", oilBounceShuffle[3].ToString());
+                        break;
+                    case "Random - Bullet Speed":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilSpeedShuffle[3] });
+                        oilStorage.Add("3", oilSpeedShuffle[3].ToString());
+                        break;
+                    case "Random - Add Damage":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilAddDamShuffle[3] });
+                        oilStorage.Add("3", oilAddDamShuffle[3].ToString());
+                        break;
+                    case "Random - % Damage":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilMultDamShuffle[3] });
+                        oilStorage.Add("3", oilMultDamShuffle[3].ToString());
+                        break;
+                    case "Random - Durability":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilDurShuffle[3] });
+                        oilStorage.Add("3", oilDurShuffle[3].ToString());
+                        break;
+                    case "Random - Penetration":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilPenShuffle[3] });
+                        oilStorage.Add("3", oilPenShuffle[3].ToString());
+                        break;
+                    case "Random - Projectiles":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilProjShuffle[3] });
+                        oilStorage.Add("3", oilProjShuffle[3].ToString());
+                        break;
+                    case "Random - Recoil":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilRecoilShuffle[3] });
+                        oilStorage.Add("3", oilRecoilShuffle[3].ToString());
+                        break;
+                    case "Random - Reload Speed":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilReloadShuffle[3] });
+                        oilStorage.Add("3", oilReloadShuffle[3].ToString());
+                        break;
+                    case "Random - RPM":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilRPMShuffle[3] });
+                        oilStorage.Add("3", oilRPMShuffle[3].ToString());
+                        break;
+                    case "Random - Spread":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilSpreadShuffle[3] });
+                        oilStorage.Add("3", oilSpreadShuffle[3].ToString());
+                        break;
+                    default:
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = selectedOil4.ToString() });
+                        oilStorage.Add("3", selectedOil4.ToString());
+                        break;
+                }
+                // Remove potential dupes
+                if (oilStorage.ContainsKey("3"))
+                {
+                    if (oilAllShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilAllShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilAmmoShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilAmmoShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilCritShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilCritShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilBounceShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilBounceShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilSpeedShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilSpeedShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilAddDamShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilAddDamShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilMultDamShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilMultDamShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilDurShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilDurShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilPenShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilPenShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilProjShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilProjShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilRecoilShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilRecoilShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilReloadShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilReloadShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilRPMShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilRPMShuffle.Remove(oilStorage["3"]);
+                    }
+                    if (oilSpreadShuffle.Any(s => s == oilStorage["3"]))
+                    {
+                        bool wasRemoved = oilSpreadShuffle.Remove(oilStorage["3"]);
+                    }
+                }
+
+                // Add Fifth Oil
+                switch (selectedOil5)
+                {
+                    case "None":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = selectedOil5.ToString() });
+                        break;
+                    case "Random - All":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilAllShuffle[4] });
+                        oilStorage.Add("4", oilAllShuffle[4].ToString());
+                        break;
+                    case "Random - Ammo Consume Chance":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilAmmoShuffle[4] });
+                        oilStorage.Add("4", oilAmmoShuffle[4].ToString());
+                        break;
+                    case "Random - Base Crit Chance":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilCritShuffle[4] });
+                        oilStorage.Add("4", oilCritShuffle[4].ToString());
+                        break;
+                    case "Random - Bullet Bounces":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilBounceShuffle[4] });
+                        oilStorage.Add("4", oilBounceShuffle[4].ToString());
+                        break;
+                    case "Random - Bullet Speed":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilSpeedShuffle[4] });
+                        oilStorage.Add("4", oilSpeedShuffle[4].ToString());
+                        break;
+                    case "Random - Add Damage":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilAddDamShuffle[4] });
+                        oilStorage.Add("4", oilAddDamShuffle[4].ToString());
+                        break;
+                    case "Random - % Damage":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilMultDamShuffle[4] });
+                        oilStorage.Add("4", oilMultDamShuffle[4].ToString());
+                        break;
+                    case "Random - Durability":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilDurShuffle[4] });
+                        oilStorage.Add("4", oilDurShuffle[4].ToString());
+                        break;
+                    case "Random - Penetration":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilPenShuffle[4] });
+                        oilStorage.Add("4", oilPenShuffle[4].ToString());
+                        break;
+                    case "Random - Projectiles":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilProjShuffle[4] });
+                        oilStorage.Add("4", oilProjShuffle[4].ToString());
+                        break;
+                    case "Random - Recoil":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilRecoilShuffle[4] });
+                        oilStorage.Add("4", oilRecoilShuffle[4].ToString());
+                        break;
+                    case "Random - Reload Speed":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilReloadShuffle[4] });
+                        oilStorage.Add("4", oilReloadShuffle[4].ToString());
+                        break;
+                    case "Random - RPM":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilRPMShuffle[4] });
+                        oilStorage.Add("4", oilRPMShuffle[4].ToString());
+                        break;
+                    case "Random - Spread":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilSpreadShuffle[4] });
+                        oilStorage.Add("4", oilSpreadShuffle[4].ToString());
+                        break;
+                    default:
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = selectedOil5.ToString() });
+                        oilStorage.Add("4", selectedOil5.ToString());
+                        break;
+                }
+            }
+            // If Scrolls enabled
+            if (selectedScroll != "None")
+            {
+                // Add First Oil to Grid
+                switch (selectedOil1)
+                {
+                    case "None":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = selectedOil1.ToString() });
+                        break;
+                    case "Random - All":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilAllShuffle[0] });
+                        oilStorage.Add("0", oilAllShuffle[0].ToString());
+                        break;
+                    case "Random - Ammo Consume Chance":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilAmmoShuffle[0] });
+                        oilStorage.Add("0", oilAmmoShuffle[0].ToString());
+                        break;
+                    case "Random - Base Crit Chance":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilCritShuffle[0] });
+                        oilStorage.Add("0", oilCritShuffle[0].ToString());
+                        break;
+                    case "Random - Bullet Bounces":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilBounceShuffle[0] });
+                        oilStorage.Add("0", oilBounceShuffle[0].ToString());
+                        break;
+                    case "Random - Bullet Speed":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilSpeedShuffle[0] });
+                        oilStorage.Add("0", oilSpeedShuffle[0].ToString());
+                        break;
+                    case "Random - Add Damage":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilAddDamShuffle[0] });
+                        oilStorage.Add("0", oilAddDamShuffle[0].ToString());
+                        break;
+                    case "Random - % Damage":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilMultDamShuffle[0] });
+                        oilStorage.Add("0", oilMultDamShuffle[0].ToString());
+                        break;
+                    case "Random - Durability":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilDurShuffle[0] });
+                        oilStorage.Add("0", oilDurShuffle[0].ToString());
+                        break;
+                    case "Random - Penetration":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilPenShuffle[0] });
+                        oilStorage.Add("0", oilPenShuffle[0].ToString());
+                        break;
+                    case "Random - Projectiles":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilProjShuffle[0] });
+                        oilStorage.Add("0", oilProjShuffle[0].ToString());
+                        break;
+                    case "Random - Recoil":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilRecoilShuffle[0] });
+                        oilStorage.Add("0", oilRecoilShuffle[0].ToString());
+                        break;
+                    case "Random - Reload Speed":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilReloadShuffle[0] });
+                        oilStorage.Add("0", oilReloadShuffle[0].ToString());
+                        break;
+                    case "Random - RPM":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilRPMShuffle[0] });
+                        oilStorage.Add("0", oilRPMShuffle[0].ToString());
+                        break;
+                    case "Random - Spread":
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = oilSpreadShuffle[0] });
+                        oilStorage.Add("0", oilSpreadShuffle[0].ToString());
+                        break;
+                    default:
+                        this.build_box.Items[7] = (new MyItem { Item = "Enchantment 2", Selection = selectedOil1.ToString() });
+                        oilStorage.Add("0", selectedOil1.ToString());
+                        break;
+                }
+                // Remove potential dupes
+                if (oilStorage.ContainsKey("0"))
+                {
+                    if (oilAllShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilAllShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilAmmoShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilAmmoShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilCritShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilCritShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilBounceShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilBounceShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilSpeedShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilSpeedShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilAddDamShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilAddDamShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilMultDamShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilMultDamShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilDurShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilDurShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilPenShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilPenShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilProjShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilProjShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilRecoilShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilRecoilShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilReloadShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilReloadShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilRPMShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilRPMShuffle.Remove(oilStorage["0"]);
+                    }
+                    if (oilSpreadShuffle.Any(s => s == oilStorage["0"]))
+                    {
+                        bool wasRemoved = oilSpreadShuffle.Remove(oilStorage["0"]);
+                    }
+                }
+
+                // Add Second Oil to Grid
+                switch (selectedOil2)
+                {
+                    case "None":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = selectedOil2.ToString() });
+                        break;
+                    case "Random - All":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilAllShuffle[1] });
+                        oilStorage.Add("1", oilAllShuffle[1].ToString());
+                        break;
+                    case "Random - Ammo Consume Chance":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilAmmoShuffle[1] });
+                        oilStorage.Add("1", oilAmmoShuffle[1].ToString());
+                        break;
+                    case "Random - Base Crit Chance":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilCritShuffle[1] });
+                        oilStorage.Add("1", oilCritShuffle[1].ToString());
+                        break;
+                    case "Random - Bullet Bounces":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilBounceShuffle[1] });
+                        oilStorage.Add("1", oilBounceShuffle[1].ToString());
+                        break;
+                    case "Random - Bullet Speed":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilSpeedShuffle[1] });
+                        oilStorage.Add("1", oilSpeedShuffle[1].ToString());
+                        break;
+                    case "Random - Add Damage":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilAddDamShuffle[1] });
+                        oilStorage.Add("1", oilAddDamShuffle[1].ToString());
+                        break;
+                    case "Random - % Damage":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilMultDamShuffle[1] });
+                        oilStorage.Add("1", oilMultDamShuffle[1].ToString());
+                        break;
+                    case "Random - Durability":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilDurShuffle[1] });
+                        oilStorage.Add("1", oilDurShuffle[1].ToString());
+                        break;
+                    case "Random - Penetration":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilPenShuffle[1] });
+                        oilStorage.Add("1", oilPenShuffle[1].ToString());
+                        break;
+                    case "Random - Projectiles":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilProjShuffle[1] });
+                        oilStorage.Add("1", oilProjShuffle[1].ToString());
+                        break;
+                    case "Random - Recoil":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilRecoilShuffle[1] });
+                        oilStorage.Add("1", oilRecoilShuffle[1].ToString());
+                        break;
+                    case "Random - Reload Speed":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilReloadShuffle[1] });
+                        oilStorage.Add("1", oilReloadShuffle[1].ToString());
+                        break;
+                    case "Random - RPM":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilRPMShuffle[1] });
+                        oilStorage.Add("1", oilRPMShuffle[1].ToString());
+                        break;
+                    case "Random - Spread":
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = oilSpreadShuffle[1] });
+                        oilStorage.Add("1", oilSpreadShuffle[1].ToString());
+                        break;
+                    default:
+                        this.build_box.Items[8] = (new MyItem { Item = "Enchantment 3", Selection = selectedOil2.ToString() });
+                        oilStorage.Add("1", selectedOil2.ToString());
+                        break;
+                }
+                // Remove potential dupes
+                if (oilStorage.ContainsKey("1"))
+                {
+                    if (oilAllShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilAllShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilAmmoShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilAmmoShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilCritShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilCritShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilBounceShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilBounceShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilSpeedShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilSpeedShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilAddDamShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilAddDamShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilMultDamShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilMultDamShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilDurShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilDurShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilPenShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilPenShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilProjShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilProjShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilRecoilShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilRecoilShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilReloadShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilReloadShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilRPMShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilRPMShuffle.Remove(oilStorage["1"]);
+                    }
+                    if (oilSpreadShuffle.Any(s => s == oilStorage["1"]))
+                    {
+                        bool wasRemoved = oilSpreadShuffle.Remove(oilStorage["1"]);
+                    }
+                }
+
+                // Add Third Oil to Grid
+                switch (selectedOil3)
+                {
+                    case "None":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = selectedOil3.ToString() });
+                        break;
+                    case "Random - All":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilAllShuffle[2] });
+                        oilStorage.Add("2", oilAllShuffle[2].ToString());
+                        break;
+                    case "Random - Ammo Consume Chance":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilAmmoShuffle[2] });
+                        oilStorage.Add("2", oilAmmoShuffle[2].ToString());
+                        break;
+                    case "Random - Base Crit Chance":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilCritShuffle[2] });
+                        oilStorage.Add("2", oilCritShuffle[2].ToString());
+                        break;
+                    case "Random - Bullet Bounces":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilBounceShuffle[2] });
+                        oilStorage.Add("2", oilBounceShuffle[2].ToString());
+                        break;
+                    case "Random - Bullet Speed":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilSpeedShuffle[2] });
+                        oilStorage.Add("2", oilSpeedShuffle[2].ToString());
+                        break;
+                    case "Random - Add Damage":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilAddDamShuffle[2] });
+                        oilStorage.Add("2", oilAddDamShuffle[2].ToString());
+                        break;
+                    case "Random - % Damage":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilMultDamShuffle[2] });
+                        oilStorage.Add("2", oilMultDamShuffle[2].ToString());
+                        break;
+                    case "Random - Durability":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilDurShuffle[2] });
+                        oilStorage.Add("2", oilDurShuffle[2].ToString());
+                        break;
+                    case "Random - Penetration":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilPenShuffle[2] });
+                        oilStorage.Add("2", oilPenShuffle[2].ToString());
+                        break;
+                    case "Random - Projectiles":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilProjShuffle[2] });
+                        oilStorage.Add("2", oilProjShuffle[2].ToString());
+                        break;
+                    case "Random - Recoil":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilRecoilShuffle[2] });
+                        oilStorage.Add("2", oilRecoilShuffle[2].ToString());
+                        break;
+                    case "Random - Reload Speed":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilReloadShuffle[2] });
+                        oilStorage.Add("2", oilReloadShuffle[2].ToString());
+                        break;
+                    case "Random - RPM":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilRPMShuffle[2] });
+                        oilStorage.Add("2", oilRPMShuffle[2].ToString());
+                        break;
+                    case "Random - Spread":
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = oilSpreadShuffle[2] });
+                        oilStorage.Add("2", oilSpreadShuffle[2].ToString());
+                        break;
+                    default:
+                        this.build_box.Items[9] = (new MyItem { Item = "Enchantment 4", Selection = selectedOil3.ToString() });
+                        oilStorage.Add("2", selectedOil3.ToString());
+                        break;
+                }
+                // Remove potential dupes
+                if (oilStorage.ContainsKey("2"))
+                {
+                    if (oilAllShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilAllShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilAmmoShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilAmmoShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilCritShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilCritShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilBounceShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilBounceShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilSpeedShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilSpeedShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilAddDamShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilAddDamShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilMultDamShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilMultDamShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilDurShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilDurShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilPenShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilPenShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilProjShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilProjShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilRecoilShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilRecoilShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilReloadShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilReloadShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilRPMShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilRPMShuffle.Remove(oilStorage["2"]);
+                    }
+                    if (oilSpreadShuffle.Any(s => s == oilStorage["2"]))
+                    {
+                        bool wasRemoved = oilSpreadShuffle.Remove(oilStorage["2"]);
+                    }
+                }
+
+                // Add Fourth Oil to Grid
+                switch (selectedOil4)
+                {
+                    case "None":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = selectedOil4.ToString() });
+                        break;
+                    case "Random - All":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilAllShuffle[3] });
+                        oilStorage.Add("3", oilAllShuffle[3].ToString());
+                        break;
+                    case "Random - Ammo Consume Chance":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilAmmoShuffle[3] });
+                        oilStorage.Add("3", oilAmmoShuffle[3].ToString());
+                        break;
+                    case "Random - Base Crit Chance":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilCritShuffle[3] });
+                        oilStorage.Add("3", oilCritShuffle[3].ToString());
+                        break;
+                    case "Random - Bullet Bounces":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilBounceShuffle[3] });
+                        oilStorage.Add("3", oilBounceShuffle[3].ToString());
+                        break;
+                    case "Random - Bullet Speed":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilSpeedShuffle[3] });
+                        oilStorage.Add("3", oilSpeedShuffle[3].ToString());
+                        break;
+                    case "Random - Add Damage":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilAddDamShuffle[3] });
+                        oilStorage.Add("3", oilAddDamShuffle[3].ToString());
+                        break;
+                    case "Random - % Damage":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilMultDamShuffle[3] });
+                        oilStorage.Add("3", oilMultDamShuffle[3].ToString());
+                        break;
+                    case "Random - Durability":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilDurShuffle[3] });
+                        oilStorage.Add("3", oilDurShuffle[3].ToString());
+                        break;
+                    case "Random - Penetration":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilPenShuffle[3] });
+                        oilStorage.Add("3", oilPenShuffle[3].ToString());
+                        break;
+                    case "Random - Projectiles":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilProjShuffle[3] });
+                        oilStorage.Add("3", oilProjShuffle[3].ToString());
+                        break;
+                    case "Random - Recoil":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilRecoilShuffle[3] });
+                        oilStorage.Add("3", oilRecoilShuffle[3].ToString());
+                        break;
+                    case "Random - Reload Speed":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilReloadShuffle[3] });
+                        oilStorage.Add("3", oilReloadShuffle[3].ToString());
+                        break;
+                    case "Random - RPM":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilRPMShuffle[3] });
+                        oilStorage.Add("3", oilRPMShuffle[3].ToString());
+                        break;
+                    case "Random - Spread":
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = oilSpreadShuffle[3] });
+                        oilStorage.Add("3", oilSpreadShuffle[3].ToString());
+                        break;
+                    default:
+                        this.build_box.Items[10] = (new MyItem { Item = "Enchantment 5", Selection = selectedOil4.ToString() });
+                        oilStorage.Add("3", selectedOil4.ToString());
+                        break;
+                }
+            }    
+
 
             // Equipment Randomizer
             if (allEquipmentCheckbox.IsChecked == true)
