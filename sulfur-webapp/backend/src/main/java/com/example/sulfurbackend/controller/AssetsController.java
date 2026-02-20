@@ -46,10 +46,15 @@ public class AssetsController {
             return ResponseEntity.badRequest().body("{}");
         }
 
-        // Try filesystem first (useful during development)
-        Path fsPath = Paths.get("./sulfur-webapp/backend/src/main/resources/" + DATA_ROOT + "/" + path);
-        if (Files.exists(fsPath)) {
-            return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(Files.readString(fsPath));
+        // Try multiple filesystem locations first (workspace copy, original project)
+        Path fsPath1 = Paths.get("./sulfur-webapp/backend/src/main/resources/" + DATA_ROOT + "/" + path);
+        Path fsPath2 = Paths.get("./SULFURBuildGenerator/JSON/" + path);
+
+        if (Files.exists(fsPath1)) {
+            return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(Files.readString(fsPath1));
+        }
+        if (Files.exists(fsPath2)) {
+            return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(Files.readString(fsPath2));
         }
 
         // Try classpath
@@ -66,10 +71,17 @@ public class AssetsController {
         // Normalize
         String sub = (subfolder == null || subfolder.isBlank()) ? "" : subfolder.replace("\\", "/");
 
-        // Try filesystem first
-        Path fsPath = Paths.get("./sulfur-webapp/backend/src/main/resources/" + DATA_ROOT + (sub.isEmpty() ? "" : "/" + sub));
-        if (Files.exists(fsPath) && Files.isDirectory(fsPath)) {
-            return Files.list(fsPath)
+        // Try multiple filesystem locations first
+        Path fsPath1 = Paths.get("./sulfur-webapp/backend/src/main/resources/" + DATA_ROOT + (sub.isEmpty() ? "" : "/" + sub));
+        Path fsPath2 = Paths.get("./SULFURBuildGenerator/JSON/" + (sub.isEmpty() ? "" : sub));
+
+        if (Files.exists(fsPath1) && Files.isDirectory(fsPath1)) {
+            return Files.list(fsPath1)
+                    .map(p -> p.getFileName().toString())
+                    .collect(Collectors.toList());
+        }
+        if (Files.exists(fsPath2) && Files.isDirectory(fsPath2)) {
+            return Files.list(fsPath2)
                     .map(p -> p.getFileName().toString())
                     .collect(Collectors.toList());
         }
